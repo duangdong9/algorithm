@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端进阶算法：看完这篇，再也不怕堆排序、Top K、中位数问题面试了 | duangdong的algorithm</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.a1270bfd.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/23.8dfd5cc9.js" as="script"><link rel="prefetch" href="/assets/js/10.e202a706.js"><link rel="prefetch" href="/assets/js/11.ecb9c7a6.js"><link rel="prefetch" href="/assets/js/12.266a3d3f.js"><link rel="prefetch" href="/assets/js/13.0c793450.js"><link rel="prefetch" href="/assets/js/14.988999f7.js"><link rel="prefetch" href="/assets/js/15.a499e395.js"><link rel="prefetch" href="/assets/js/16.76fbd414.js"><link rel="prefetch" href="/assets/js/17.c4144f70.js"><link rel="prefetch" href="/assets/js/18.3eb6638a.js"><link rel="prefetch" href="/assets/js/19.a77cf33a.js"><link rel="prefetch" href="/assets/js/20.ce0df852.js"><link rel="prefetch" href="/assets/js/21.ede5df4c.js"><link rel="prefetch" href="/assets/js/22.9d15467b.js"><link rel="prefetch" href="/assets/js/24.318a6667.js"><link rel="prefetch" href="/assets/js/25.21d4e02e.js"><link rel="prefetch" href="/assets/js/26.56d7af6b.js"><link rel="prefetch" href="/assets/js/27.706c20ac.js"><link rel="prefetch" href="/assets/js/28.78138cb9.js"><link rel="prefetch" href="/assets/js/29.d42a44bf.js"><link rel="prefetch" href="/assets/js/3.0f21e356.js"><link rel="prefetch" href="/assets/js/30.16e46063.js"><link rel="prefetch" href="/assets/js/31.f83796d7.js"><link rel="prefetch" href="/assets/js/32.0ab71512.js"><link rel="prefetch" href="/assets/js/33.15f6178f.js"><link rel="prefetch" href="/assets/js/34.76fa72d8.js"><link rel="prefetch" href="/assets/js/35.2d0e715d.js"><link rel="prefetch" href="/assets/js/36.9fea7079.js"><link rel="prefetch" href="/assets/js/37.40c3a072.js"><link rel="prefetch" href="/assets/js/38.75ccc694.js"><link rel="prefetch" href="/assets/js/39.7237e7eb.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.af50e053.js"><link rel="prefetch" href="/assets/js/41.542ba3df.js"><link rel="prefetch" href="/assets/js/42.dc0826e3.js"><link rel="prefetch" href="/assets/js/43.5a75223c.js"><link rel="prefetch" href="/assets/js/44.ece2f88a.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/8.2255b937.js"><link rel="prefetch" href="/assets/js/9.98c97d09.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的algorithm</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/algorithm/" class="nav-link router-link-active">
+  数据结构
+</a></div><div class="nav-item"><a href="/leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/leetcode-summary/" class="nav-link">
+  算法题
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/algorithm/" class="nav-link router-link-active">
+  数据结构
+</a></div><div class="nav-item"><a href="/leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/leetcode-summary/" class="nav-link">
+  算法题
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/algorithm/" aria-current="page" class="sidebar-link">算法相关</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>前端实际项目使用</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/algorithm/动态规划.html" class="sidebar-link">前端也能学算法：由浅入深讲解动态规划</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>排序</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/algorithm/由浅入深讲解贪心算法.html" class="sidebar-link">前端也能学算法：由浅入深讲解贪心算法</a></li><li><a href="/algorithm/简单复习下前端算法复杂度相关的知识.html" class="sidebar-link">简单复习下前端算法复杂度相关的知识</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>算法进阶</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/algorithm/算法进阶/ChromeV8源码看JavaScript数组.html" class="sidebar-link">前端进阶算法2：从Chrome V8源码看JavaScript数组(附赠腾讯面试题)</a></li><li><a href="/algorithm/算法进阶/DIff算法看不懂就一起来锤我.html" class="sidebar-link">DIff算法看不懂就一起来锤我</a></li><li><a href="/algorithm/算法进阶/Diff算法核心原理.html" class="sidebar-link">15张图，20分钟吃透Diff算法核心原理</a></li><li><a href="/algorithm/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/" aria-current="page" class="sidebar-link">算法进阶</a></li><li><a href="/algorithm/算法进阶/一看就懂的队列及配套算法题.html" class="sidebar-link">前端进阶算法6：一看就懂的队列及配套算法题</a></li><li><a href="/algorithm/算法进阶/从浏览器缓存淘汰策略和Vue的keep-alive学习LRU算法.html" class="sidebar-link">前端进阶算法3：从浏览器缓存淘汰策略和Vue的keep-alive学习LRU算法</a></li><li><a href="/algorithm/算法进阶/别再说你不懂Top-K问题了.html" class="sidebar-link">别再说你不懂Top K问题了</a></li><li><a href="/algorithm/算法进阶/去大厂面试问我算法.html" class="sidebar-link">去大厂面试问我算法，我该怎么办？</a></li><li><a href="/algorithm/算法进阶/吊打面试官之数据结构栈.html" class="sidebar-link">前端进阶算法5：吊打面试官之数据结构栈（+leetcode刷题）</a></li><li><a href="/algorithm/算法进阶/堆排序.html" class="active sidebar-link">前端进阶算法：看完这篇，再也不怕堆排序、Top K、中位数问题面试了</a></li><li><a href="/algorithm/算法进阶/头条正在面的哈希表问题.html" class="sidebar-link">前端进阶算法：头条正在面的哈希表问题</a></li><li><a href="/algorithm/算法进阶/如何分析-统计算法的执行效率和资源消耗.html" class="sidebar-link">前端进阶算法1：如何分析、统计算法的执行效率和资源消耗？</a></li><li><a href="/algorithm/算法进阶/小白都可以看懂的树与二叉树.html" class="sidebar-link">前端进阶算法7：小白都可以看懂的树与二叉树</a></li><li><a href="/algorithm/算法进阶/带你快速入门前端算法.html" class="sidebar-link">10 问 10 答，带你快速入门前端算法</a></li><li><a href="/algorithm/算法进阶/常见算法题及完美题解.html" class="sidebar-link">前端进阶算法：常见算法题及完美题解</a></li><li><a href="/algorithm/算法进阶/链表原来如此简单.html" class="sidebar-link">前端进阶算法4：链表原来如此简单(+leetcode刷题）</a></li></ul></section></li><li><a href="/algorithm/贪心.html" class="sidebar-link">前端也能学算法：由浅入深讲解贪心算法</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="前端进阶算法-看完这篇-再也不怕堆排序、top-k、中位数问题面试了"><a href="#前端进阶算法-看完这篇-再也不怕堆排序、top-k、中位数问题面试了" class="header-anchor">#</a> 前端进阶算法：看完这篇，再也不怕堆排序、Top K、中位数问题面试了</h1> <h3 id="引言"><a href="#引言" class="header-anchor">#</a> 引言</h3> <p>堆是前端进阶必不可少的知识，也是面试的重难点，例如内存堆与垃圾回收、Top K 问题等，这篇文章将从基础开始梳理整个堆体系，按以下步骤来讲：</p> <ul><li>什么是堆</li> <li>怎样建堆</li> <li>堆排序</li> <li>内存堆与垃圾回收</li> <li>Top K 问题</li> <li>中位数问题</li> <li>最后来一道leetcode题目，加深理解</li></ul> <p>下面开始吧👇</p> <h3 id="一、堆"><a href="#一、堆" class="header-anchor">#</a> 一、堆</h3> <p>满足下面两个条件的就是堆：</p> <ul><li>堆是一个完全二叉树</li> <li>堆上的任意节点值都必须大于等于（<strong>大顶堆</strong>）或小于等于（<strong>小顶堆</strong>）其左右子节点值</li></ul> <p>如果堆上的任意节点都大于等于子节点值，则称为 <strong>大顶堆</strong></p> <p>如果堆上的任意节点都小于等于子节点值，则称为 <strong>小顶堆</strong></p> <p>也就是说，在大顶堆中，根节点是堆中最大的元素；</p> <p>在小顶堆中，根节点是堆中最小的元素；</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQQnB87JBMgLUOtSNLdfn4fxSTeGsmKQUx8VOBTibec4sWL0pmpnz1pBpBJRyj2ZMWiaxGx6teqm00ow/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>上图我们可以看出：<strong>堆其实可以用一个数组表示，给定一个节点的下标 <code>i</code> ，那么它的父节点一定为 <code>A[i/2]</code> ，左子节点为 <code>A[2i]</code> ，右子节点为 <code>A[2i+1]</code></strong></p> <h3 id="二、怎样创建一个大-小-顶堆"><a href="#二、怎样创建一个大-小-顶堆" class="header-anchor">#</a> 二、怎样创建一个大（小）顶堆</h3> <p>我们在上一节说过，完全二叉树适用于数组存储法（<a href="http://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247484632&amp;idx=1&amp;sn=0bc1a31c155315e82ee86f817488b72b&amp;chksm=faec8000cd9b09160fef43ba7a3b9dd66239a1a6f00e6bddb3fceb050010065c55441ac9c790&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">前端进阶算法7：小白都可以看懂的树与二叉树<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>），而堆又是一个完全二叉树，所以它可以直接使用数组存储法存储：</p> <div class="language- extra-class"><pre class="language-text"><code>function Heap() {
+    let items = [,]
+}
+</code></pre></div><p>那么怎样去创建一个大顶堆（小顶堆）喃？</p> <p>常用的方式有两种：</p> <ul><li>插入式创建：每次插入一个节点，实现一个大顶堆（或小顶堆）</li> <li>原地创建：又称堆化，给定一组节点，实现一个大顶堆（或小顶堆）</li></ul> <h3 id="三、插入式建堆"><a href="#三、插入式建堆" class="header-anchor">#</a> 三、插入式建堆</h3> <p><strong>插入节点：</strong></p> <ul><li>将节点插入到队尾</li> <li><strong>自下往上堆化：</strong> 将插入节点与其父节点比较，如果插入节点大于父节点（大顶堆）或插入节点小于父节点（小顶堆），则插入节点与父节点调整位置</li> <li>一直重复上一步，直到不需要交换或交换到根节点，此时插入完成。</li></ul> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQQnB87JBMgLUOtSNLdfn4fxBOR3miaHRTuw1v53ibiaTA8K8oXloDe24aowIQOCkM5UtQDMQEtiaRRBLA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>function insert(key) {
+    items.push(key)
+    // 获取存储位置
+    let i = items.length-1 
+    while (i/2 &gt; 0 &amp;&amp; items[i] &gt; items[i/2]) {  
+        swap(items, i, i/2); // 交换 
+        i = i/2; 
+    }
+}  
+function swap(items, i, j) {
+    let temp = items[i]
+    items[i] = items[j]
+    items[j] = temp
+}
+</code></pre></div><p><strong>时间复杂度：</strong> O(logn)，为树的高度</p> <h3 id="四、原地建堆-堆化"><a href="#四、原地建堆-堆化" class="header-anchor">#</a> 四、原地建堆（堆化）</h3> <p>假设一组序列：</p> <div class="language- extra-class"><pre class="language-text"><code>let arr = [,1, 9, 2, 8, 3, 7, 4, 6, 5]
+</code></pre></div><p>原地建堆的方法有两种：一种是承袭上面插入的思想，即从前往后、自下而上式堆化建堆；与之对应的另一种是，从后往前、自上往下式堆化建堆。其中</p> <ul><li><strong>自下而上式堆化</strong> ：将节点与其父节点比较，如果节点大于父节点（大顶堆）或节点小于父节点（小顶堆），则节点与父节点调整位置</li> <li><strong>自上往下式堆化</strong> ：将节点与其左右子节点比较，如果存在左右子节点大于该节点（大顶堆）或小于该节点（小顶堆），则将子节点的最大值（大顶堆）或最小值（小顶堆）与之交换</li></ul> <p><strong>所以，自下而上式堆是调整节点与父节点（往上走），自上往下式堆化是调整节点与其左右子节点（往下走）。</strong></p> <h4 id="_1-从前往后、自下而上式堆化建堆"><a href="#_1-从前往后、自下而上式堆化建堆" class="header-anchor">#</a> 1. 从前往后、自下而上式堆化建堆</h4> <p>这里以小顶堆为例，</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQQnB87JBMgLUOtSNLdfn4fxvEk8VcIUv8iaWnjfZ6u6x5MBI7OBmrBKLicc4Rgjd2KI6K7lLrbtTJXw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 初始有效序列长度为 1,上图中用 k 表示
+var heapSize = 1
+// 原地建堆
+function buildHeap(items) {
+    while(heapSize &lt; items.length - 1) {
+        heapSize ++
+        heapify(items, heapSize)
+    }
+}
+
+function heapify(items, i) {
+    // 自下而上式堆化
+    while (Math.floor(i/2) &gt; 0 &amp;&amp; items[i] &lt; items[Math.floor(i/2)]) {  
+        swap(items, i, Math.floor(i/2)); // 交换 
+        i = Math.floor(i/2); 
+    }
+}  
+
+function swap(items, i, j) {
+    let temp = items[i]
+    items[i] = items[j]
+    items[j] = temp
+}
+
+// 测试
+var items = [,5, 2, 3, 4, 1]
+buildHeap(items)
+console.log(items)
+// [empty, 1, 2, 3, 5, 4]
+</code></pre></div><p>测试成功</p> <h4 id="_2-从后往前、自上而下式堆化建堆"><a href="#_2-从后往前、自上而下式堆化建堆" class="header-anchor">#</a> 2. 从后往前、自上而下式堆化建堆</h4> <p>这里以小顶堆为例</p> <p>注意：从后往前并不是从序列的最后一个元素开始，而是从最后一个非叶子节点开始，这是因为，叶子节点没有子节点，不需要自上而下式堆化。</p> <p>最后一个子节点的父节点为 <code>n/2</code> ，所以从 <code>n/2</code> 位置节点开始堆化：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQQnB87JBMgLUOtSNLdfn4fxL7ic1oRLQnQjfnouIYoSCeF3h87aLKDicUy8XOyGU2Gd178s1WWicqicRQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>代码实现</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 原地建堆
+// items: 原始序列
+// heapSize: 有效序列长度,上图用 k 表示
+function buildHeap(items, heapSize) {
+    // 从最后一个非叶子节点开始，自上而下式堆化
+    for (let i = Math.floor(heapSize/2); i &gt;= 1; --i) {    
+        heapify(items, heapSize, i);  
+    }
+}
+function heapify(items, heapSize, i) {
+    // 自上而下式堆化
+    while (true) {
+        var maxIndex = i;
+        if(2*i &lt;= heapSize &amp;&amp; items[i] &gt; items[i*2] ) {
+            maxIndex = i*2;
+        }
+        if(2*i+1 &lt;= heapSize &amp;&amp; items[maxIndex] &gt; items[i*2+1] ) {
+            maxIndex = i*2+1;
+        }
+        if (maxIndex === i) break;
+        swap(items, i, maxIndex); // 交换 
+        i = maxIndex; 
+    }
+}  
+function swap(items, i, j) {
+    let temp = items[i]
+    items[i] = items[j]
+    items[j] = temp
+}
+
+// 测试
+var items = [,5, 2, 3, 4, 1]
+// 因为 items[0] 不存储数据
+// 所以：heapSize = items.length - 1
+buildHeap(items, items.length - 1)
+console.log(items)
+// [empty, 1, 2, 3, 4, 5]
+</code></pre></div><p>测试成功</p> <h3 id="五、排序算法-堆排序"><a href="#五、排序算法-堆排序" class="header-anchor">#</a> 五、排序算法：堆排序</h3> <h4 id="_1-原理"><a href="#_1-原理" class="header-anchor">#</a> 1. 原理</h4> <p>堆是一棵完全二叉树，它可以使用数组存储，并且大顶堆的最大值存储在根节点（i=1），所以我们可以每次取大顶堆的根结点与堆的最后一个节点交换，此时最大值放入了有效序列的最后一位，并且有效序列减1，有效堆依然保持完全二叉树的结构，然后堆化，成为新的大顶堆，重复此操作，知道有效堆的长度为 0，排序完成。</p> <p>完整步骤为：</p> <ul><li>将原序列（n个）转化成一个大顶堆</li> <li>设置堆的有效序列长度为 n</li> <li>将堆顶元素（第一个有效序列）与最后一个子元素（最后一个有效序列）交换，并有效序列长度减1</li> <li>堆化有效序列，使有效序列重新称为一个大顶堆</li> <li>重复以上2步，直到有效序列的长度为 1，排序完成</li></ul> <h4 id="_2-动图演示"><a href="#_2-动图演示" class="header-anchor">#</a> 2. 动图演示</h4> <p><img src="https://mmbiz.qpic.cn/mmbiz_gif/pfCCZhlbMQQnB87JBMgLUOtSNLdfn4fx6qkpXGKtcE8rrEl3fZNEhQ8zLXOMM1QjPu5zfoIxgbZSIiaXRPIjIicw/640?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="图片"></p> <h4 id="_3-代码实现"><a href="#_3-代码实现" class="header-anchor">#</a> 3. 代码实现</h4> <div class="language- extra-class"><pre class="language-text"><code>function heapSort(items) {
+    // 构建大顶堆
+    buildHeap(items, items.length-1)
+    // 设置堆的初始有效序列长度为 items.length - 1
+    let heapSize = items.length - 1
+    for (var i = items.length - 1; i &gt; 1; i--) {
+        // 交换堆顶元素与最后一个有效子元素
+        swap(items, 1, i);
+        // 有效序列长度减 1
+        heapSize --;
+        // 堆化有效序列(有效序列长度为 currentHeapSize，抛除了最后一个元素)
+        heapify(items, heapSize, 1);
+    }
+    return items;
+}
+
+// 原地建堆
+// items: 原始序列
+// heapSize: 有效序列长度
+function buildHeap(items, heapSize) {
+    // 从最后一个非叶子节点开始，自上而下式堆化
+    for (let i = Math.floor(heapSize/2); i &gt;= 1; --i) {    
+        heapify(items, heapSize, i);  
+    }
+}
+function heapify(items, heapSize, i) {
+    // 自上而下式堆化
+    while (true) {
+        var maxIndex = i;
+        if(2*i &lt;= heapSize &amp;&amp; items[i] &lt; items[i*2] ) {
+            maxIndex = i*2;
+        }
+        if(2*i+1 &lt;= heapSize &amp;&amp; items[maxIndex] &lt; items[i*2+1] ) {
+            maxIndex = i*2+1;
+        }
+        if (maxIndex === i) break;
+        swap(items, i, maxIndex); // 交换 
+        i = maxIndex; 
+    }
+}  
+function swap(items, i, j) {
+    let temp = items[i]
+    items[i] = items[j]
+    items[j] = temp
+}
+
+// 测试
+var items = [,1, 9, 2, 8, 3, 7, 4, 6, 5]
+heapSort(items)
+// [empty, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre></div><p>测试成功</p> <h4 id="_4-复杂度分析"><a href="#_4-复杂度分析" class="header-anchor">#</a> 4. 复杂度分析</h4> <p><strong>时间复杂度：</strong> 建堆过程的时间复杂度是 <code>O(n)</code> ，排序过程的时间复杂度是 <code>O(nlogn)</code> ，整体时间复杂度是 <code>O(nlogn)</code></p> <p><strong>空间复杂度：</strong> <code>O(1)</code></p> <h3 id="六、内存堆与垃圾回收"><a href="#六、内存堆与垃圾回收" class="header-anchor">#</a> 六、内存堆与垃圾回收</h3> <p>前端面试高频考察点，瓶子君已经在 栈 章节中介绍过，点击前往<a href="http://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247484417&amp;idx=1&amp;sn=c08cd285e412053dc2c2f1336752c5c9&amp;chksm=faec80d9cd9b09cf266f62dbc5a1b26f5c9f897f6509ed379a20a8333a005b2d8701f6b9bb37&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">前端进阶算法5：吊打面试官之数据结构栈（+leetcode刷题）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="七、堆的经典应用-top-k-问题-常见于腾讯、字节等面试中"><a href="#七、堆的经典应用-top-k-问题-常见于腾讯、字节等面试中" class="header-anchor">#</a> 七、堆的经典应用：Top K 问题（常见于腾讯、字节等面试中）</h3> <blockquote><p>什么是 Top K 问题？简单来说就是在一组数据里面找到频率出现最高的前 K 个数，或前 K 大（当然也可以是前 K 小）的数。</p></blockquote> <p>这种问题我们该怎么处理喃？我们以从数组中取前 K 大的数据为例，可以按以下步骤来：</p> <ul><li>从数组中取前 <code>K</code> 个数，构造一个小顶堆</li> <li>从 <code>K+1</code> 位开始遍历数组，每一个数据都和小顶堆的堆顶元素进行比较，如果小于堆顶元素，则不做任何处理，继续遍历下一元素；如果大于堆顶元素，则将这个元素替换掉堆顶元素，然后再堆化成一个小顶堆。</li> <li>遍历完成后，堆中的数据就是前 K 大的数据</li></ul> <p>遍历数组需要 O(N) 的时间复杂度，一次堆化需要 O(logK) 时间复杂度，所以利用堆求 Top K 问题的时间复杂度为 O(NlogK)。</p> <h4 id="利用堆求-top-k-问题的优势"><a href="#利用堆求-top-k-问题的优势" class="header-anchor">#</a> 利用堆求 Top K 问题的优势</h4> <p>也许很多人会认为，这种求 Top K 问题可以使用排序呀，没必要使用堆呀</p> <p>其实是可以使用排序来做的，将数组进行排序（可以是最简单的快排），去前 K 个数就可以了，so easy</p> <p>但当我们需要在一个动态数组中求 Top K 元素怎么办喃，动态数组可能会插入或删除元素，难道我们每次求 Top K 问题的时候都需要对数组进行重新排序吗？那每次的时间复杂度都为 O(NlogN)</p> <p>这里就可以使用堆，我们可以维护一个 K 大小的小顶堆，当有数据被添加到数组中时，就将它与堆顶元素比较，如果比堆顶元素大，则将这个元素替换掉堆顶元素，然后再堆化成一个小顶堆；如果比堆顶元素小，则不做处理。这样，每次求 Top K 问题的时间复杂度仅为 O(logK)</p> <h3 id="八、堆的经典应用-中位数问题"><a href="#八、堆的经典应用-中位数问题" class="header-anchor">#</a> 八、堆的经典应用：中位数问题</h3> <p>除了 Top K 问题，堆还有一个经典的应用场景就是求中位数问题</p> <blockquote><p>中位数，就是处于中间的那个数：</p> <p>[1, 2, 3, 4, 5]   的中位数是 3</p> <p>[1, 2, 3, 4, 5, 6]  的中位数是 3, 4</p> <p>即：</p> <p>当 n % 2 !== 0 时，中位数为：arr[(n-1)/2]</p> <p>当 n % 2 === 0 时，中位数为：arr[n/2],  arr[n/2 + 1]</p></blockquote> <p>如何利用堆来求解中位数问题喃？</p> <p>这里需要维护两个堆：</p> <ul><li>大顶堆：用来存取前 n/2 个小元素，如果 n 为奇数，则用来存取前 <code>Math.floor(n/2) + 1</code>个元素</li> <li>小顶堆：用来存取后 n/2 个小元素</li></ul> <p>那么，中位数就为：</p> <ul><li>n 为奇数：中位数是大顶堆的堆顶元素</li> <li>n 为偶数：中位数是大顶堆的堆顶元素与小顶堆的堆顶元素</li></ul> <p>当数组为动态数组时，每当数组中插入一个元素时，都需要如何调整堆喃？</p> <p>如果插入元素比大顶堆的堆顶要大，则将该元素插入到小顶堆中；如果要小，则插入到大顶堆中。</p> <p>当出入完后后，如果大顶堆、小顶堆中元素的个数不满足我们已上的要求，我们就需要不断的将大顶堆的堆顶元素或小顶堆的堆顶元素移动到另一个堆中，知道满足要求</p> <p>由于插入元素到堆、移动堆顶元素都需要堆化，所以，插入的时间复杂度为 O(logN) ，每次插入完成后求中位数仅仅需要返回堆顶元素即可，时间复杂度为 O(1)</p> <h4 id="中位数的变形-tp-99-问题"><a href="#中位数的变形-tp-99-问题" class="header-anchor">#</a> 中位数的变形：TP 99 问题</h4> <blockquote><p>TP 99 问题：指在一个时间段内（如5分钟），统计某个方法（或接口）每次调用所消耗的时间，并将这些时间按从小到大的顺序进行排序，取第 99% 的那个值作为 TP99 值；</p> <p>例如某个接口在 5 分钟内被调用了100次，每次耗时从 1ms 到 100ms之间不等数据，将请求耗时从小到大排列，TP99 就是取第 100*0.99 = 99 次请求耗时 ，类似地 TP50、TP90，TP99越小，说明这个接口的性能越好</p></blockquote> <p>所以，针对 TP99 问题，我们同样也可以维护两个堆，一个大顶堆，一个小顶堆。大顶堆中保存前 <code>99%</code> 个数据，小顶堆中保存后 <code>1%</code> 个数据。大顶堆堆顶的数据就是我们要找的 99% 响应时间。</p> <p>本小节参考极客时间的：数据结构与算法之美</p> <h3 id="九、总结"><a href="#九、总结" class="header-anchor">#</a> 九、总结</h3> <p>堆是一个完全二叉树，并且堆上的任意节点值都必须大于等于（<strong>大顶堆</strong>）或小于等于（<strong>小顶堆</strong>）其左右子节点值，推可以采用数组存储法存储，可以通过插入式建堆或原地建堆，堆的重要应用有：</p> <ul><li>堆排序</li> <li>Top K 问题：堆化，取前 K 个元素</li> <li>中位数问题：维护两个堆，一大（前50%）一小（后50%），奇数元素取大顶堆的堆顶，偶数取取大、小顶堆的堆顶</li></ul> <p>JavaScript 的存储机制分为代码空间、栈空间以及堆空间，代码空间用于存放可执行代码，栈空间用于存放基本类型数据和引用类型地址，堆空间用于存放引用类型数据，当调用栈中执行完成一个执行上下文时，需要进行垃圾回收该上下文以及相关数据空间，存放在栈空间上的数据通过 ESP 指针来回收，存放在堆空间的数据通过副垃圾回收器（新生代）与主垃圾回收器（老生代）来回收。详情可查看<a href="http://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247484417&amp;idx=1&amp;sn=c08cd285e412053dc2c2f1336752c5c9&amp;chksm=faec80d9cd9b09cf266f62dbc5a1b26f5c9f897f6509ed379a20a8333a005b2d8701f6b9bb37&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">前端进阶算法5：吊打面试官之数据结构栈（+leetcode刷题）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="十、leetcode刷题-最小的k个数"><a href="#十、leetcode刷题-最小的k个数" class="header-anchor">#</a> 十、leetcode刷题：最小的k个数</h3> <p>话不多说，来一道题目加深一下理解吧：</p> <p>输入整数数组 <code>arr</code> ，找出其中最小的 <code>k</code> 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。</p> <p><strong>示例 1：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>输入：arr = [3,2,1], k = 2
+输出：[1,2] 或者 [2,1]
+</code></pre></div><p><strong>示例 2：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>输入：arr = [0,1,2,1], k = 1
+输出：[0]
+</code></pre></div><p><strong>限制：</strong></p> <ul><li><code>0 &lt;= k &lt;= arr.length &lt;= 10000</code></li> <li><code>0 &lt;= arr[i] &lt;= 10000</code></li></ul> <p>题目详情已提交到 https://github.com/sisterAn/JavaScript-Algorithms/issues/59 ，欢迎解答，欢迎star</p> <h3 id="感谢阅读❤️"><a href="#感谢阅读❤️" class="header-anchor">#</a> 感谢阅读❤️</h3> <p>欢迎关注「前端瓶子君」，回复「交流」加入前端交流群！</p> <p>欢迎关注「前端瓶子君」，回复「算法」自动加入，从0到1构建完整的数据结构与算法体系！</p> <p>在这里，瓶子君不仅介绍算法，还将算法与前端各个领域进行结合，包括浏览器、HTTP、V8、React、Vue源码等。</p> <p>在这里，你可以每天学习一道大厂算法题（阿里、腾讯、百度、字节等等）或 leetcode，瓶子君都会在第二天解答哟！</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQQYTquARVybx8MjPHdibmMQ3icWt2hR5uqZiaZs5KPpGiaeiaDAM8bb6fuawMD4QUcc8rFEMrTvEIy04cw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><a href="https://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247484898&amp;idx=1&amp;sn=17901b4eb404398e13afddaa9f5f7c08&amp;chksm=faec813acd9b082c8e598b0511d813fffb41230563858bb13ca2a65421079915ba23e1b2e92c&amp;scene=178&amp;cur_album_id=1342984294104662017&amp;rd2werd=1&amp;key=af591244b6d224fe9e711c3b13e6dc0ff264eb28b895e38ea47c283f6b363d14f6cb4ca220a1eb167f688784bc87966cfce20b82805ac14fdd3cbe7986236db108fcf71951d2164cd01fbf93162c7b7344f1153658ebd10296de53943e22f97f2f9bd6bff664c0ceacf67431e54590281c52168082d3c841d576dc996bacbd17&amp;ascene=1&amp;uin=MTE5NzkwMDQyOA%3D%3D&amp;devicetype=iMac+MacBookPro16%2C1+OSX+OSX+10.16+build(20G95)&amp;version=13010510&amp;nettype=WIFI&amp;lang=zh_CN&amp;fontScale=100&amp;exportkey=AUhs5CZxb0xu%2BTgrcK1nDWQ%3D&amp;pass_ticket=wFWGmZwhuThchaxD%2F8KCFyP5ohv32kJThs87R2RE0n8DjhSFnI501UNUy31Bvchp&amp;wx_header=0&amp;fontgear=3.000000" target="_blank" rel="noopener noreferrer">》》面试官也在看的算法资料《《<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>“在看和转发”就是最大的支持</p> <p><img src="https://mmbiz.qlogo.cn/mmbiz_jpg/iaUXCIgN4lOFcYSsSBnCia2E6kJJmR2Suh7a0Lm4TsmAxtmiaYRr5etvyHb7vIA6jb9kfVl2WSQBiciauzhLA50mtxg/0?wx_fmt=jpeg" alt="作者"></p> <p>前端瓶子君</p> <p><img src="https://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247484898&amp;idx=1&amp;sn=17901b4eb404398e13afddaa9f5f7c08&amp;chksm=faec813acd9b082c8e598b0511d813fffb41230563858bb13ca2a65421079915ba23e1b2e92c&amp;scene=178&amp;cur_album_id=1342984294104662017&amp;rd2werd=1&amp;key=af591244b6d224fe9e711c3b13e6dc0ff264eb28b895e38ea47c283f6b363d14f6cb4ca220a1eb167f688784bc87966cfce20b82805ac14fdd3cbe7986236db108fcf71951d2164cd01fbf93162c7b7344f1153658ebd10296de53943e22f97f2f9bd6bff664c0ceacf67431e54590281c52168082d3c841d576dc996bacbd17&amp;ascene=1&amp;uin=MTE5NzkwMDQyOA%3D%3D&amp;devicetype=iMac+MacBookPro16%2C1+OSX+OSX+10.16+build(20G95)&amp;version=13010510&amp;nettype=WIFI&amp;lang=zh_CN&amp;fontScale=100&amp;exportkey=AUhs5CZxb0xu%2BTgrcK1nDWQ%3D&amp;pass_ticket=wFWGmZwhuThchaxD%2F8KCFyP5ohv32kJThs87R2RE0n8DjhSFnI501UNUy31Bvchp&amp;wx_header=0&amp;fontgear=3.000000" alt="赞赏二维码"><a href="https://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247484898&amp;idx=1&amp;sn=17901b4eb404398e13afddaa9f5f7c08&amp;chksm=faec813acd9b082c8e598b0511d813fffb41230563858bb13ca2a65421079915ba23e1b2e92c&amp;scene=178&amp;cur_album_id=1342984294104662017&amp;rd2werd=1&amp;key=af591244b6d224fe9e711c3b13e6dc0ff264eb28b895e38ea47c283f6b363d14f6cb4ca220a1eb167f688784bc87966cfce20b82805ac14fdd3cbe7986236db108fcf71951d2164cd01fbf93162c7b7344f1153658ebd10296de53943e22f97f2f9bd6bff664c0ceacf67431e54590281c52168082d3c841d576dc996bacbd17&amp;ascene=1&amp;uin=MTE5NzkwMDQyOA%3D%3D&amp;devicetype=iMac+MacBookPro16%2C1+OSX+OSX+10.16+build(20G95)&amp;version=13010510&amp;nettype=WIFI&amp;lang=zh_CN&amp;fontScale=100&amp;exportkey=AUhs5CZxb0xu%2BTgrcK1nDWQ%3D&amp;pass_ticket=wFWGmZwhuThchaxD%2F8KCFyP5ohv32kJThs87R2RE0n8DjhSFnI501UNUy31Bvchp&amp;wx_header=0&amp;fontgear=3.000000##" target="_blank" rel="noopener noreferrer">喜欢作者<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="https://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247484898&amp;idx=1&amp;sn=17901b4eb404398e13afddaa9f5f7c08&amp;chksm=faec813acd9b082c8e598b0511d813fffb41230563858bb13ca2a65421079915ba23e1b2e92c&amp;scene=178&amp;cur_album_id=1342984294104662017&amp;rd2werd=1&amp;key=af591244b6d224fe9e711c3b13e6dc0ff264eb28b895e38ea47c283f6b363d14f6cb4ca220a1eb167f688784bc87966cfce20b82805ac14fdd3cbe7986236db108fcf71951d2164cd01fbf93162c7b7344f1153658ebd10296de53943e22f97f2f9bd6bff664c0ceacf67431e54590281c52168082d3c841d576dc996bacbd17&amp;ascene=1&amp;uin=MTE5NzkwMDQyOA%3D%3D&amp;devicetype=iMac+MacBookPro16%2C1+OSX+OSX+10.16+build(20G95)&amp;version=13010510&amp;nettype=WIFI&amp;lang=zh_CN&amp;fontScale=100&amp;exportkey=AUhs5CZxb0xu%2BTgrcK1nDWQ%3D&amp;pass_ticket=wFWGmZwhuThchaxD%2F8KCFyP5ohv32kJThs87R2RE0n8DjhSFnI501UNUy31Bvchp&amp;wx_header=0&amp;fontgear=3.000000##" target="_blank" rel="noopener noreferrer">阅读原文<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>阅读 1968</p> <p>赞在看13前端进阶算法：看完这篇，再也不怕堆排序、Top K、中位数问题面试了</p> <p>原创 前端瓶子君 前端瓶子君 <em>2020-06-03</em></p> <p>收录于话题#前端进阶算法14个</p> <h3 id="引言-2"><a href="#引言-2" class="header-anchor">#</a> 引言</h3> <p>堆是前端进阶必不可少的知识，也是面试的重难点，例如内存堆与垃圾回收、Top K 问题等，这篇文章将从基础开始梳理整个堆体系，按以下步骤来讲：</p> <ul><li>什么是堆</li> <li>怎样建堆</li> <li>堆排序</li> <li>内存堆与垃圾回收</li> <li>Top K 问题</li> <li>中位数问题</li> <li>最后来一道leetcode题目，加深理解</li></ul> <p>下面开始吧👇</p> <h3 id="一、堆-2"><a href="#一、堆-2" class="header-anchor">#</a> 一、堆</h3> <p>满足下面两个条件的就是堆：</p> <ul><li>堆是一个完全二叉树</li> <li>堆上的任意节点值都必须大于等于（<strong>大顶堆</strong>）或小于等于（<strong>小顶堆</strong>）其左右子节点值</li></ul> <p>如果堆上的任意节点都大于等于子节点值，则称为 <strong>大顶堆</strong></p> <p>如果堆上的任意节点都小于等于子节点值，则称为 <strong>小顶堆</strong></p> <p>也就是说，在大顶堆中，根节点是堆中最大的元素；</p> <p>在小顶堆中，根节点是堆中最小的元素；</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQQnB87JBMgLUOtSNLdfn4fxSTeGsmKQUx8VOBTibec4sWL0pmpnz1pBpBJRyj2ZMWiaxGx6teqm00ow/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>上图我们可以看出：<strong>堆其实可以用一个数组表示，给定一个节点的下标 <code>i</code> ，那么它的父节点一定为 <code>A[i/2]</code> ，左子节点为 <code>A[2i]</code> ，右子节点为 <code>A[2i+1]</code></strong></p> <h3 id="二、怎样创建一个大-小-顶堆-2"><a href="#二、怎样创建一个大-小-顶堆-2" class="header-anchor">#</a> 二、怎样创建一个大（小）顶堆</h3> <p>我们在上一节说过，完全二叉树适用于数组存储法（<a href="http://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247484632&amp;idx=1&amp;sn=0bc1a31c155315e82ee86f817488b72b&amp;chksm=faec8000cd9b09160fef43ba7a3b9dd66239a1a6f00e6bddb3fceb050010065c55441ac9c790&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">前端进阶算法7：小白都可以看懂的树与二叉树<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>），而堆又是一个完全二叉树，所以它可以直接使用数组存储法存储：</p> <div class="language- extra-class"><pre class="language-text"><code>function Heap() {
+    let items = [,]
+}
+</code></pre></div><p>那么怎样去创建一个大顶堆（小顶堆）喃？</p> <p>常用的方式有两种：</p> <ul><li>插入式创建：每次插入一个节点，实现一个大顶堆（或小顶堆）</li> <li>原地创建：又称堆化，给定一组节点，实现一个大顶堆（或小顶堆）</li></ul> <h3 id="三、插入式建堆-2"><a href="#三、插入式建堆-2" class="header-anchor">#</a> 三、插入式建堆</h3> <p><strong>插入节点：</strong></p> <ul><li>将节点插入到队尾</li> <li><strong>自下往上堆化：</strong> 将插入节点与其父节点比较，如果插入节点大于父节点（大顶堆）或插入节点小于父节点（小顶堆），则插入节点与父节点调整位置</li> <li>一直重复上一步，直到不需要交换或交换到根节点，此时插入完成。</li></ul> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQQnB87JBMgLUOtSNLdfn4fxBOR3miaHRTuw1v53ibiaTA8K8oXloDe24aowIQOCkM5UtQDMQEtiaRRBLA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>function insert(key) {
+    items.push(key)
+    // 获取存储位置
+    let i = items.length-1 
+    while (i/2 &gt; 0 &amp;&amp; items[i] &gt; items[i/2]) {  
+        swap(items, i, i/2); // 交换 
+        i = i/2; 
+    }
+}  
+function swap(items, i, j) {
+    let temp = items[i]
+    items[i] = items[j]
+    items[j] = temp
+}
+</code></pre></div><p><strong>时间复杂度：</strong> O(logn)，为树的高度</p> <h3 id="四、原地建堆-堆化-2"><a href="#四、原地建堆-堆化-2" class="header-anchor">#</a> 四、原地建堆（堆化）</h3> <p>假设一组序列：</p> <div class="language- extra-class"><pre class="language-text"><code>let arr = [,1, 9, 2, 8, 3, 7, 4, 6, 5]
+</code></pre></div><p>原地建堆的方法有两种：一种是承袭上面插入的思想，即从前往后、自下而上式堆化建堆；与之对应的另一种是，从后往前、自上往下式堆化建堆。其中</p> <ul><li><strong>自下而上式堆化</strong> ：将节点与其父节点比较，如果节点大于父节点（大顶堆）或节点小于父节点（小顶堆），则节点与父节点调整位置</li> <li><strong>自上往下式堆化</strong> ：将节点与其左右子节点比较，如果存在左右子节点大于该节点（大顶堆）或小于该节点（小顶堆），则将子节点的最大值（大顶堆）或最小值（小顶堆）与之交换</li></ul> <p><strong>所以，自下而上式堆是调整节点与父节点（往上走），自上往下式堆化是调整节点与其左右子节点（往下走）。</strong></p> <h4 id="_1-从前往后、自下而上式堆化建堆-2"><a href="#_1-从前往后、自下而上式堆化建堆-2" class="header-anchor">#</a> 1. 从前往后、自下而上式堆化建堆</h4> <p>这里以小顶堆为例，</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQQnB87JBMgLUOtSNLdfn4fxvEk8VcIUv8iaWnjfZ6u6x5MBI7OBmrBKLicc4Rgjd2KI6K7lLrbtTJXw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 初始有效序列长度为 1,上图中用 k 表示
+var heapSize = 1
+// 原地建堆
+function buildHeap(items) {
+    while(heapSize &lt; items.length - 1) {
+        heapSize ++
+        heapify(items, heapSize)
+    }
+}
+
+function heapify(items, i) {
+    // 自下而上式堆化
+    while (Math.floor(i/2) &gt; 0 &amp;&amp; items[i] &lt; items[Math.floor(i/2)]) {  
+        swap(items, i, Math.floor(i/2)); // 交换 
+        i = Math.floor(i/2); 
+    }
+}  
+
+function swap(items, i, j) {
+    let temp = items[i]
+    items[i] = items[j]
+    items[j] = temp
+}
+
+// 测试
+var items = [,5, 2, 3, 4, 1]
+buildHeap(items)
+console.log(items)
+// [empty, 1, 2, 3, 5, 4]
+</code></pre></div><p>测试成功</p> <h4 id="_2-从后往前、自上而下式堆化建堆-2"><a href="#_2-从后往前、自上而下式堆化建堆-2" class="header-anchor">#</a> 2. 从后往前、自上而下式堆化建堆</h4> <p>这里以小顶堆为例</p> <p>注意：从后往前并不是从序列的最后一个元素开始，而是从最后一个非叶子节点开始，这是因为，叶子节点没有子节点，不需要自上而下式堆化。</p> <p>最后一个子节点的父节点为 <code>n/2</code> ，所以从 <code>n/2</code> 位置节点开始堆化：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQQnB87JBMgLUOtSNLdfn4fxL7ic1oRLQnQjfnouIYoSCeF3h87aLKDicUy8XOyGU2Gd178s1WWicqicRQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>代码实现</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 原地建堆
+// items: 原始序列
+// heapSize: 有效序列长度,上图用 k 表示
+function buildHeap(items, heapSize) {
+    // 从最后一个非叶子节点开始，自上而下式堆化
+    for (let i = Math.floor(heapSize/2); i &gt;= 1; --i) {    
+        heapify(items, heapSize, i);  
+    }
+}
+function heapify(items, heapSize, i) {
+    // 自上而下式堆化
+    while (true) {
+        var maxIndex = i;
+        if(2*i &lt;= heapSize &amp;&amp; items[i] &gt; items[i*2] ) {
+            maxIndex = i*2;
+        }
+        if(2*i+1 &lt;= heapSize &amp;&amp; items[maxIndex] &gt; items[i*2+1] ) {
+            maxIndex = i*2+1;
+        }
+        if (maxIndex === i) break;
+        swap(items, i, maxIndex); // 交换 
+        i = maxIndex; 
+    }
+}  
+function swap(items, i, j) {
+    let temp = items[i]
+    items[i] = items[j]
+    items[j] = temp
+}
+
+// 测试
+var items = [,5, 2, 3, 4, 1]
+// 因为 items[0] 不存储数据
+// 所以：heapSize = items.length - 1
+buildHeap(items, items.length - 1)
+console.log(items)
+// [empty, 1, 2, 3, 4, 5]
+</code></pre></div><p>测试成功</p> <h3 id="五、排序算法-堆排序-2"><a href="#五、排序算法-堆排序-2" class="header-anchor">#</a> 五、排序算法：堆排序</h3> <h4 id="_1-原理-2"><a href="#_1-原理-2" class="header-anchor">#</a> 1. 原理</h4> <p>堆是一棵完全二叉树，它可以使用数组存储，并且大顶堆的最大值存储在根节点（i=1），所以我们可以每次取大顶堆的根结点与堆的最后一个节点交换，此时最大值放入了有效序列的最后一位，并且有效序列减1，有效堆依然保持完全二叉树的结构，然后堆化，成为新的大顶堆，重复此操作，知道有效堆的长度为 0，排序完成。</p> <p>完整步骤为：</p> <ul><li>将原序列（n个）转化成一个大顶堆</li> <li>设置堆的有效序列长度为 n</li> <li>将堆顶元素（第一个有效序列）与最后一个子元素（最后一个有效序列）交换，并有效序列长度减1</li> <li>堆化有效序列，使有效序列重新称为一个大顶堆</li> <li>重复以上2步，直到有效序列的长度为 1，排序完成</li></ul> <h4 id="_2-动图演示-2"><a href="#_2-动图演示-2" class="header-anchor">#</a> 2. 动图演示</h4> <p><img src="https://mmbiz.qpic.cn/mmbiz_gif/pfCCZhlbMQQnB87JBMgLUOtSNLdfn4fx6qkpXGKtcE8rrEl3fZNEhQ8zLXOMM1QjPu5zfoIxgbZSIiaXRPIjIicw/640?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="图片"></p> <h4 id="_3-代码实现-2"><a href="#_3-代码实现-2" class="header-anchor">#</a> 3. 代码实现</h4> <div class="language- extra-class"><pre class="language-text"><code>function heapSort(items) {
+    // 构建大顶堆
+    buildHeap(items, items.length-1)
+    // 设置堆的初始有效序列长度为 items.length - 1
+    let heapSize = items.length - 1
+    for (var i = items.length - 1; i &gt; 1; i--) {
+        // 交换堆顶元素与最后一个有效子元素
+        swap(items, 1, i);
+        // 有效序列长度减 1
+        heapSize --;
+        // 堆化有效序列(有效序列长度为 currentHeapSize，抛除了最后一个元素)
+        heapify(items, heapSize, 1);
+    }
+    return items;
+}
+
+// 原地建堆
+// items: 原始序列
+// heapSize: 有效序列长度
+function buildHeap(items, heapSize) {
+    // 从最后一个非叶子节点开始，自上而下式堆化
+    for (let i = Math.floor(heapSize/2); i &gt;= 1; --i) {    
+        heapify(items, heapSize, i);  
+    }
+}
+function heapify(items, heapSize, i) {
+    // 自上而下式堆化
+    while (true) {
+        var maxIndex = i;
+        if(2*i &lt;= heapSize &amp;&amp; items[i] &lt; items[i*2] ) {
+            maxIndex = i*2;
+        }
+        if(2*i+1 &lt;= heapSize &amp;&amp; items[maxIndex] &lt; items[i*2+1] ) {
+            maxIndex = i*2+1;
+        }
+        if (maxIndex === i) break;
+        swap(items, i, maxIndex); // 交换 
+        i = maxIndex; 
+    }
+}  
+function swap(items, i, j) {
+    let temp = items[i]
+    items[i] = items[j]
+    items[j] = temp
+}
+
+// 测试
+var items = [,1, 9, 2, 8, 3, 7, 4, 6, 5]
+heapSort(items)
+// [empty, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre></div><p>测试成功</p> <h4 id="_4-复杂度分析-2"><a href="#_4-复杂度分析-2" class="header-anchor">#</a> 4. 复杂度分析</h4> <p><strong>时间复杂度：</strong> 建堆过程的时间复杂度是 <code>O(n)</code> ，排序过程的时间复杂度是 <code>O(nlogn)</code> ，整体时间复杂度是 <code>O(nlogn)</code></p> <p><strong>空间复杂度：</strong> <code>O(1)</code></p> <h3 id="六、内存堆与垃圾回收-2"><a href="#六、内存堆与垃圾回收-2" class="header-anchor">#</a> 六、内存堆与垃圾回收</h3> <p>前端面试高频考察点，瓶子君已经在 栈 章节中介绍过，点击前往<a href="http://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247484417&amp;idx=1&amp;sn=c08cd285e412053dc2c2f1336752c5c9&amp;chksm=faec80d9cd9b09cf266f62dbc5a1b26f5c9f897f6509ed379a20a8333a005b2d8701f6b9bb37&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">前端进阶算法5：吊打面试官之数据结构栈（+leetcode刷题）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="七、堆的经典应用-top-k-问题-常见于腾讯、字节等面试中-2"><a href="#七、堆的经典应用-top-k-问题-常见于腾讯、字节等面试中-2" class="header-anchor">#</a> 七、堆的经典应用：Top K 问题（常见于腾讯、字节等面试中）</h3> <blockquote><p>什么是 Top K 问题？简单来说就是在一组数据里面找到频率出现最高的前 K 个数，或前 K 大（当然也可以是前 K 小）的数。</p></blockquote> <p>这种问题我们该怎么处理喃？我们以从数组中取前 K 大的数据为例，可以按以下步骤来：</p> <ul><li>从数组中取前 <code>K</code> 个数，构造一个小顶堆</li> <li>从 <code>K+1</code> 位开始遍历数组，每一个数据都和小顶堆的堆顶元素进行比较，如果小于堆顶元素，则不做任何处理，继续遍历下一元素；如果大于堆顶元素，则将这个元素替换掉堆顶元素，然后再堆化成一个小顶堆。</li> <li>遍历完成后，堆中的数据就是前 K 大的数据</li></ul> <p>遍历数组需要 O(N) 的时间复杂度，一次堆化需要 O(logK) 时间复杂度，所以利用堆求 Top K 问题的时间复杂度为 O(NlogK)。</p> <h4 id="利用堆求-top-k-问题的优势-2"><a href="#利用堆求-top-k-问题的优势-2" class="header-anchor">#</a> 利用堆求 Top K 问题的优势</h4> <p>也许很多人会认为，这种求 Top K 问题可以使用排序呀，没必要使用堆呀</p> <p>其实是可以使用排序来做的，将数组进行排序（可以是最简单的快排），去前 K 个数就可以了，so easy</p> <p>但当我们需要在一个动态数组中求 Top K 元素怎么办喃，动态数组可能会插入或删除元素，难道我们每次求 Top K 问题的时候都需要对数组进行重新排序吗？那每次的时间复杂度都为 O(NlogN)</p> <p>这里就可以使用堆，我们可以维护一个 K 大小的小顶堆，当有数据被添加到数组中时，就将它与堆顶元素比较，如果比堆顶元素大，则将这个元素替换掉堆顶元素，然后再堆化成一个小顶堆；如果比堆顶元素小，则不做处理。这样，每次求 Top K 问题的时间复杂度仅为 O(logK)</p> <h3 id="八、堆的经典应用-中位数问题-2"><a href="#八、堆的经典应用-中位数问题-2" class="header-anchor">#</a> 八、堆的经典应用：中位数问题</h3> <p>除了 Top K 问题，堆还有一个经典的应用场景就是求中位数问题</p> <blockquote><p>中位数，就是处于中间的那个数：</p> <p>[1, 2, 3, 4, 5]   的中位数是 3</p> <p>[1, 2, 3, 4, 5, 6]  的中位数是 3, 4</p> <p>即：</p> <p>当 n % 2 !== 0 时，中位数为：arr[(n-1)/2]</p> <p>当 n % 2 === 0 时，中位数为：arr[n/2],  arr[n/2 + 1]</p></blockquote> <p>如何利用堆来求解中位数问题喃？</p> <p>这里需要维护两个堆：</p> <ul><li>大顶堆：用来存取前 n/2 个小元素，如果 n 为奇数，则用来存取前 <code>Math.floor(n/2) + 1</code>个元素</li> <li>小顶堆：用来存取后 n/2 个小元素</li></ul> <p>那么，中位数就为：</p> <ul><li>n 为奇数：中位数是大顶堆的堆顶元素</li> <li>n 为偶数：中位数是大顶堆的堆顶元素与小顶堆的堆顶元素</li></ul> <p>当数组为动态数组时，每当数组中插入一个元素时，都需要如何调整堆喃？</p> <p>如果插入元素比大顶堆的堆顶要大，则将该元素插入到小顶堆中；如果要小，则插入到大顶堆中。</p> <p>当出入完后后，如果大顶堆、小顶堆中元素的个数不满足我们已上的要求，我们就需要不断的将大顶堆的堆顶元素或小顶堆的堆顶元素移动到另一个堆中，知道满足要求</p> <p>由于插入元素到堆、移动堆顶元素都需要堆化，所以，插入的时间复杂度为 O(logN) ，每次插入完成后求中位数仅仅需要返回堆顶元素即可，时间复杂度为 O(1)</p> <h4 id="中位数的变形-tp-99-问题-2"><a href="#中位数的变形-tp-99-问题-2" class="header-anchor">#</a> 中位数的变形：TP 99 问题</h4> <blockquote><p>TP 99 问题：指在一个时间段内（如5分钟），统计某个方法（或接口）每次调用所消耗的时间，并将这些时间按从小到大的顺序进行排序，取第 99% 的那个值作为 TP99 值；</p> <p>例如某个接口在 5 分钟内被调用了100次，每次耗时从 1ms 到 100ms之间不等数据，将请求耗时从小到大排列，TP99 就是取第 100*0.99 = 99 次请求耗时 ，类似地 TP50、TP90，TP99越小，说明这个接口的性能越好</p></blockquote> <p>所以，针对 TP99 问题，我们同样也可以维护两个堆，一个大顶堆，一个小顶堆。大顶堆中保存前 <code>99%</code> 个数据，小顶堆中保存后 <code>1%</code> 个数据。大顶堆堆顶的数据就是我们要找的 99% 响应时间。</p> <p>本小节参考极客时间的：数据结构与算法之美</p> <h3 id="九、总结-2"><a href="#九、总结-2" class="header-anchor">#</a> 九、总结</h3> <p>堆是一个完全二叉树，并且堆上的任意节点值都必须大于等于（<strong>大顶堆</strong>）或小于等于（<strong>小顶堆</strong>）其左右子节点值，推可以采用数组存储法存储，可以通过插入式建堆或原地建堆，堆的重要应用有：</p> <ul><li>堆排序</li> <li>Top K 问题：堆化，取前 K 个元素</li> <li>中位数问题：维护两个堆，一大（前50%）一小（后50%），奇数元素取大顶堆的堆顶，偶数取取大、小顶堆的堆顶</li></ul> <p>JavaScript 的存储机制分为代码空间、栈空间以及堆空间，代码空间用于存放可执行代码，栈空间用于存放基本类型数据和引用类型地址，堆空间用于存放引用类型数据，当调用栈中执行完成一个执行上下文时，需要进行垃圾回收该上下文以及相关数据空间，存放在栈空间上的数据通过 ESP 指针来回收，存放在堆空间的数据通过副垃圾回收器（新生代）与主垃圾回收器（老生代）来回收。详情可查看<a href="http://mp.weixin.qq.com/s?__biz=MzUzNjk5MTE1OQ==&amp;mid=2247484417&amp;idx=1&amp;sn=c08cd285e412053dc2c2f1336752c5c9&amp;chksm=faec80d9cd9b09cf266f62dbc5a1b26f5c9f897f6509ed379a20a8333a005b2d8701f6b9bb37&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">前端进阶算法5：吊打面试官之数据结构栈（+leetcode刷题）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="十、leetcode刷题-最小的k个数-2"><a href="#十、leetcode刷题-最小的k个数-2" class="header-anchor">#</a> 十、leetcode刷题：最小的k个数</h3> <p>话不多说，来一道题目加深一下理解吧：</p> <p>输入整数数组 <code>arr</code> ，找出其中最小的 <code>k</code> 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。</p> <p><strong>示例 1：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>输入：arr = [3,2,1], k = 2
+输出：[1,2] 或者 [2,1]
+</code></pre></div><p><strong>示例 2：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>输入：arr = [0,1,2,1], k = 1
+输出：[0]
+</code></pre></div><p><strong>限制：</strong></p> <ul><li><code>0 &lt;= k &lt;= arr.length &lt;= 10000</code></li> <li><code>0 &lt;= arr[i] &lt;= 10000</code></li></ul> <p>题目详情已提交到 https://github.com/sisterAn/JavaScript-Algorithms/issues/59 ，欢迎解答，欢迎star</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:36:39 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/algorithm/算法进阶/吊打面试官之数据结构栈.html" class="prev">
+        前端进阶算法5：吊打面试官之数据结构栈（+leetcode刷题）
+      </a></span> <span class="next"><a href="/algorithm/算法进阶/头条正在面的哈希表问题.html">
+        前端进阶算法：头条正在面的哈希表问题
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.a1270bfd.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/23.8dfd5cc9.js" defer></script>
+  </body>
+</html>

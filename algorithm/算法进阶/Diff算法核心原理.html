@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>15张图，20分钟吃透Diff算法核心原理 | duangdong的algorithm</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.a1270bfd.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/16.76fbd414.js" as="script"><link rel="prefetch" href="/assets/js/10.e202a706.js"><link rel="prefetch" href="/assets/js/11.ecb9c7a6.js"><link rel="prefetch" href="/assets/js/12.266a3d3f.js"><link rel="prefetch" href="/assets/js/13.0c793450.js"><link rel="prefetch" href="/assets/js/14.988999f7.js"><link rel="prefetch" href="/assets/js/15.a499e395.js"><link rel="prefetch" href="/assets/js/17.c4144f70.js"><link rel="prefetch" href="/assets/js/18.3eb6638a.js"><link rel="prefetch" href="/assets/js/19.a77cf33a.js"><link rel="prefetch" href="/assets/js/20.ce0df852.js"><link rel="prefetch" href="/assets/js/21.ede5df4c.js"><link rel="prefetch" href="/assets/js/22.9d15467b.js"><link rel="prefetch" href="/assets/js/23.8dfd5cc9.js"><link rel="prefetch" href="/assets/js/24.318a6667.js"><link rel="prefetch" href="/assets/js/25.21d4e02e.js"><link rel="prefetch" href="/assets/js/26.56d7af6b.js"><link rel="prefetch" href="/assets/js/27.706c20ac.js"><link rel="prefetch" href="/assets/js/28.78138cb9.js"><link rel="prefetch" href="/assets/js/29.d42a44bf.js"><link rel="prefetch" href="/assets/js/3.0f21e356.js"><link rel="prefetch" href="/assets/js/30.16e46063.js"><link rel="prefetch" href="/assets/js/31.f83796d7.js"><link rel="prefetch" href="/assets/js/32.0ab71512.js"><link rel="prefetch" href="/assets/js/33.15f6178f.js"><link rel="prefetch" href="/assets/js/34.76fa72d8.js"><link rel="prefetch" href="/assets/js/35.2d0e715d.js"><link rel="prefetch" href="/assets/js/36.9fea7079.js"><link rel="prefetch" href="/assets/js/37.40c3a072.js"><link rel="prefetch" href="/assets/js/38.75ccc694.js"><link rel="prefetch" href="/assets/js/39.7237e7eb.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.af50e053.js"><link rel="prefetch" href="/assets/js/41.542ba3df.js"><link rel="prefetch" href="/assets/js/42.dc0826e3.js"><link rel="prefetch" href="/assets/js/43.5a75223c.js"><link rel="prefetch" href="/assets/js/44.ece2f88a.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/8.2255b937.js"><link rel="prefetch" href="/assets/js/9.98c97d09.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的algorithm</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/algorithm/" class="nav-link router-link-active">
+  数据结构
+</a></div><div class="nav-item"><a href="/leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/leetcode-summary/" class="nav-link">
+  算法题
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/algorithm/" class="nav-link router-link-active">
+  数据结构
+</a></div><div class="nav-item"><a href="/leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/leetcode-summary/" class="nav-link">
+  算法题
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/algorithm/" aria-current="page" class="sidebar-link">算法相关</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>前端实际项目使用</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/algorithm/动态规划.html" class="sidebar-link">前端也能学算法：由浅入深讲解动态规划</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>排序</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/algorithm/由浅入深讲解贪心算法.html" class="sidebar-link">前端也能学算法：由浅入深讲解贪心算法</a></li><li><a href="/algorithm/简单复习下前端算法复杂度相关的知识.html" class="sidebar-link">简单复习下前端算法复杂度相关的知识</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>算法进阶</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/algorithm/算法进阶/ChromeV8源码看JavaScript数组.html" class="sidebar-link">前端进阶算法2：从Chrome V8源码看JavaScript数组(附赠腾讯面试题)</a></li><li><a href="/algorithm/算法进阶/DIff算法看不懂就一起来锤我.html" class="sidebar-link">DIff算法看不懂就一起来锤我</a></li><li><a href="/algorithm/算法进阶/Diff算法核心原理.html" class="active sidebar-link">15张图，20分钟吃透Diff算法核心原理</a></li><li><a href="/algorithm/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/" aria-current="page" class="sidebar-link">算法进阶</a></li><li><a href="/algorithm/算法进阶/一看就懂的队列及配套算法题.html" class="sidebar-link">前端进阶算法6：一看就懂的队列及配套算法题</a></li><li><a href="/algorithm/算法进阶/从浏览器缓存淘汰策略和Vue的keep-alive学习LRU算法.html" class="sidebar-link">前端进阶算法3：从浏览器缓存淘汰策略和Vue的keep-alive学习LRU算法</a></li><li><a href="/algorithm/算法进阶/别再说你不懂Top-K问题了.html" class="sidebar-link">别再说你不懂Top K问题了</a></li><li><a href="/algorithm/算法进阶/去大厂面试问我算法.html" class="sidebar-link">去大厂面试问我算法，我该怎么办？</a></li><li><a href="/algorithm/算法进阶/吊打面试官之数据结构栈.html" class="sidebar-link">前端进阶算法5：吊打面试官之数据结构栈（+leetcode刷题）</a></li><li><a href="/algorithm/算法进阶/堆排序.html" class="sidebar-link">前端进阶算法：看完这篇，再也不怕堆排序、Top K、中位数问题面试了</a></li><li><a href="/algorithm/算法进阶/头条正在面的哈希表问题.html" class="sidebar-link">前端进阶算法：头条正在面的哈希表问题</a></li><li><a href="/algorithm/算法进阶/如何分析-统计算法的执行效率和资源消耗.html" class="sidebar-link">前端进阶算法1：如何分析、统计算法的执行效率和资源消耗？</a></li><li><a href="/algorithm/算法进阶/小白都可以看懂的树与二叉树.html" class="sidebar-link">前端进阶算法7：小白都可以看懂的树与二叉树</a></li><li><a href="/algorithm/算法进阶/带你快速入门前端算法.html" class="sidebar-link">10 问 10 答，带你快速入门前端算法</a></li><li><a href="/algorithm/算法进阶/常见算法题及完美题解.html" class="sidebar-link">前端进阶算法：常见算法题及完美题解</a></li><li><a href="/algorithm/算法进阶/链表原来如此简单.html" class="sidebar-link">前端进阶算法4：链表原来如此简单(+leetcode刷题）</a></li></ul></section></li><li><a href="/algorithm/贪心.html" class="sidebar-link">前端也能学算法：由浅入深讲解贪心算法</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_15张图-20分钟吃透diff算法核心原理"><a href="#_15张图-20分钟吃透diff算法核心原理" class="header-anchor">#</a> 15张图，20分钟吃透Diff算法核心原理</h1> <blockquote><p><a href="https://mp.weixin.qq.com/s/ItHi1Vj6DPxtn8DjqJyCLw" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/ItHi1Vj6DPxtn8DjqJyCLw<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>大家好，我是林三心，在日常面试中，<code>Diff算法</code>都是绕不过去的一道坎，<strong>用最通俗的话，讲最难的知识点</strong>一直是我写文章的宗旨，今天我就用通俗的方式来讲解一下<code>Diff算法</code>吧？Lets Go</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtorqZ5G95cu521dKCicuIcoR6iahZIricvDz75LgNhvkUDIIjHcJtUO0lcQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">image.png</p> <h2 id="什么是虚拟dom"><a href="#什么是虚拟dom" class="header-anchor">#</a> 什么是虚拟DOM</h2> <p>讲<code>Diff算法</code>前，我先给大家讲一讲什么是<code>虚拟DOM</code>吧。这有利于后面大家对<code>Diff算法</code>的理解加深。</p> <p><code>虚拟DOM</code>是一个<code>对象</code>，一个什么样的对象呢？<strong>一个用来表示真实DOM的对象</strong>，要记住这句话。我举个例子，请看以下<code>真实DOM</code>：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;ul id=&quot;list&quot;&gt;
+    &lt;li class=&quot;item&quot;&gt;哈哈&lt;/li&gt;
+    &lt;li class=&quot;item&quot;&gt;呵呵&lt;/li&gt;
+    &lt;li class=&quot;item&quot;&gt;嘿嘿&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></div><p>对应的<code>虚拟DOM</code>为：</p> <div class="language- extra-class"><pre class="language-text"><code>let oldVDOM = { // 旧虚拟DOM
+        tagName: 'ul', // 标签名
+        props: { // 标签属性
+            id: 'list'
+        },
+        children: [ // 标签子节点
+            {
+                tagName: 'li', props: { class: 'item' }, children: ['哈哈']
+            },
+            {
+                tagName: 'li', props: { class: 'item' }, children: ['呵呵']
+            },
+            {
+                tagName: 'li', props: { class: 'item' }, children: ['嘿嘿']
+            },
+        ]
+    }
+</code></pre></div><p>这时候，我修改一个<code>li标签</code>的文本：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;ul id=&quot;list&quot;&gt;
+    &lt;li class=&quot;item&quot;&gt;哈哈&lt;/li&gt;
+    &lt;li class=&quot;item&quot;&gt;呵呵&lt;/li&gt;
+    &lt;li class=&quot;item&quot;&gt;林三心哈哈哈哈哈&lt;/li&gt; // 修改
+&lt;/ul&gt;
+</code></pre></div><p>这时候生成的<code>新虚拟DOM</code>为：</p> <div class="language- extra-class"><pre class="language-text"><code>let newVDOM = { // 新虚拟DOM
+        tagName: 'ul', // 标签名
+        props: { // 标签属性
+            id: 'list'
+        },
+        children: [ // 标签子节点
+            {
+                tagName: 'li', props: { class: 'item' }, children: ['哈哈']
+            },
+            {
+                tagName: 'li', props: { class: 'item' }, children: ['呵呵']
+            },
+            {
+                tagName: 'li', props: { class: 'item' }, children: ['林三心哈哈哈哈哈']
+            },
+        ]
+    }
+</code></pre></div><p>这就是咱们平常说的<code>新旧两个虚拟DOM</code>，这个时候的<code>新虚拟DOM</code>是数据的最新状态，那么我们直接拿<code>新虚拟DOM</code>去渲染成<code>真实DOM</code>的话，效率真的会比直接操作真实DOM高吗？那肯定是不会的，看下图：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoJqniarIBeTbcicrOfkdia62RjFS6nlYzFb9u5cl90MgTwwWuNcmgEh11g/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">截屏2021-08-07 下午10.24.17.png</p> <p>由上图，一看便知，肯定是第2种方式比较快，因为第1种方式中间还夹着一个<code>虚拟DOM</code>的步骤，所以<strong>虚拟DOM比真实DOM快</strong>这句话其实是错的，或者说是不严谨的。那正确的说法是什么呢？<strong>虚拟DOM算法操作真实DOM，性能高于直接操作真实DOM</strong>，<code>虚拟DOM</code>和<code>虚拟DOM算法</code>是两种概念。<code>虚拟DOM算法 = 虚拟DOM + Diff算法</code></p> <p><img src="http://mmbiz.qpic.cn/mmbiz_png/jQmwTIFl1V0dLQzNJW15CVaCoNjposvTpccciaj05o5nPiaqfLRRfTQiaYFYPN41Etrrqt8jPOWukPmJWt3lYxwuA/0?wx_fmt=png" alt="全栈修仙之路"></p> <p><strong>全栈修仙之路</strong></p> <p>专注分享 TS、Vue3、前端架构和源码解析等技术干货。</p> <p>132篇原创内容</p> <p>公众号</p> <h2 id="什么是diff算法"><a href="#什么是diff算法" class="header-anchor">#</a> 什么是Diff算法</h2> <p>上面咱们说了<code>虚拟DOM</code>，也知道了只有<code>虚拟DOM + Diff算法</code>才能真正的提高性能，那讲完<code>虚拟DOM</code>，我们再来讲讲<code>Diff算法</code>吧，还是上面的例子(这张图被压缩的有点小，大家可以打开看，比较清晰)：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoWXgD7FvHpiassHBqU2PsZagOniaVOVoSp63das2yZQZwibKULQs3peakQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>上图中，其实只有一个li标签修改了文本，其他都是不变的，所以没必要所有的节点都要更新，只更新这个li标签就行，Diff算法就是查出这个li标签的算法。</p> <p>总结：<strong>Diff算法是一种对比算法</strong>。对比两者是<code>旧虚拟DOM和新虚拟DOM</code>，对比出是哪个<code>虚拟节点</code>更改了，找出这个<code>虚拟节点</code>，并只更新这个虚拟节点所对应的<code>真实节点</code>，而不用更新其他数据没发生改变的节点，实现<code>精准</code>地更新真实DOM，进而<code>提高效率</code>。</p> <p><code>使用虚拟DOM算法的损耗计算</code>：总损耗 = 虚拟DOM增删改+（与Diff算法效率有关）真实DOM差异增删改+（较少的节点）排版与重绘</p> <p><code>直接操作真实DOM的损耗计算</code>：总损耗 = 真实DOM完全增删改+（可能较多的节点）排版与重绘</p> <h2 id="diff算法的原理"><a href="#diff算法的原理" class="header-anchor">#</a> Diff算法的原理</h2> <h3 id="diff同层对比"><a href="#diff同层对比" class="header-anchor">#</a> Diff同层对比</h3> <p>新旧虚拟DOM对比的时候，Diff算法比较只会在同层级进行, 不会跨层级比较。所以Diff算法是:<code>广度优先算法</code>。 时间复杂度:<code>O(n)</code></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoNkDiaiaSibhyicI9sGtRW2sakb5mJzTrfjGjUN6slJTXZU194yqgGzWo7A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h3 id="diff对比流程"><a href="#diff对比流程" class="header-anchor">#</a> Diff对比流程</h3> <p>当数据改变时，会触发<code>setter</code>，并且通过<code>Dep.notify</code>去通知所有<code>订阅者Watcher</code>，订阅者们就会调用<code>patch方法</code>，给真实DOM打补丁，更新相应的视图。对于这一步不太了解的可以看一下我之前写Vue源码系列</p> <p><code>newVnode和oldVnode</code>：同层的新旧虚拟节点<img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoEnKXtB5y1oY93PyhGuyI3F0C88N47nm5OribFqHzgtB3zEkJIKrMwog/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <h3 id="patch方法"><a href="#patch方法" class="header-anchor">#</a> patch方法</h3> <p>这个方法作用就是，对比当前同层的虚拟节点是否为同一种类型的标签<code>(同一类型的标准，下面会讲)</code>：</p> <ul><li>是：继续执行<code>patchVnode方法</code>进行深层比对</li> <li>否：没必要比对了，直接整个节点替换成<code>新虚拟节点</code></li></ul> <p>来看看<code>patch</code>的核心原理代码</p> <div class="language- extra-class"><pre class="language-text"><code>function patch(oldVnode, newVnode) {
+  // 比较是否为一个类型的节点
+  if (sameVnode(oldVnode, newVnode)) {
+    // 是：继续进行深层比较
+    patchVnode(oldVnode, newVnode)
+  } else {
+    // 否
+    const oldEl = oldVnode.el // 旧虚拟节点的真实DOM节点
+    const parentEle = api.parentNode(oldEl) // 获取父节点
+    createEle(newVnode) // 创建新虚拟节点对应的真实DOM节点
+    if (parentEle !== null) {
+      api.insertBefore(parentEle, vnode.el, api.nextSibling(oEl)) // 将新元素添加进父元素
+      api.removeChild(parentEle, oldVnode.el)  // 移除以前的旧元素节点
+      // 设置null，释放内存
+      oldVnode = null
+    }
+  }
+
+  return newVnode
+}
+</code></pre></div><h3 id="samevnode方法"><a href="#samevnode方法" class="header-anchor">#</a> sameVnode方法</h3> <p>patch关键的一步就是<code>sameVnode方法判断是否为同一类型节点</code>，那问题来了，怎么才算是同一类型节点呢？这个<code>类型</code>的标准是什么呢？</p> <p>咱们来看看sameVnode方法的核心原理代码，就一目了然了</p> <div class="language- extra-class"><pre class="language-text"><code>function sameVnode(oldVnode, newVnode) {
+  return (
+    oldVnode.key === newVnode.key &amp;&amp; // key值是否一样
+    oldVnode.tagName === newVnode.tagName &amp;&amp; // 标签名是否一样
+    oldVnode.isComment === newVnode.isComment &amp;&amp; // 是否都为注释节点
+    isDef(oldVnode.data) === isDef(newVnode.data) &amp;&amp; // 是否都定义了data
+    sameInputType(oldVnode, newVnode) // 当标签为input时，type必须是否相同
+  )
+}
+</code></pre></div><h3 id="patchvnode方法"><a href="#patchvnode方法" class="header-anchor">#</a> patchVnode方法</h3> <p>这个函数做了以下事情：</p> <ul><li>找到对应的<code>真实DOM</code>，称为<code>el</code></li> <li>判断<code>newVnode</code>和<code>oldVnode</code>是否指向同一个对象，如果是，那么直接<code>return</code></li> <li>如果他们都有文本节点并且不相等，那么将<code>el</code>的文本节点设置为<code>newVnode</code>的文本节点。</li> <li>如果<code>oldVnode</code>有子节点而<code>newVnode</code>没有，则删除<code>el</code>的子节点</li> <li>如果<code>oldVnode</code>没有子节点而<code>newVnode</code>有，则将<code>newVnode</code>的子节点真实化之后添加到<code>el</code></li> <li>如果两者都有子节点，则执行<code>updateChildren</code>函数比较子节点，这一步很重要</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function patchVnode(oldVnode, newVnode) {
+  const el = newVnode.el = oldVnode.el // 获取真实DOM对象
+  // 获取新旧虚拟节点的子节点数组
+  const oldCh = oldVnode.children, newCh = newVnode.children
+  // 如果新旧虚拟节点是同一个对象，则终止
+  if (oldVnode === newVnode) return
+  // 如果新旧虚拟节点是文本节点，且文本不一样
+  if (oldVnode.text !== null &amp;&amp; newVnode.text !== null &amp;&amp; oldVnode.text !== newVnode.text) {
+    // 则直接将真实DOM中文本更新为新虚拟节点的文本
+    api.setTextContent(el, newVnode.text)
+  } else {
+    // 否则
+
+    if (oldCh &amp;&amp; newCh &amp;&amp; oldCh !== newCh) {
+      // 新旧虚拟节点都有子节点，且子节点不一样
+
+      // 对比子节点，并更新
+      updateChildren(el, oldCh, newCh)
+    } else if (newCh) {
+      // 新虚拟节点有子节点，旧虚拟节点没有
+
+      // 创建新虚拟节点的子节点，并更新到真实DOM上去
+      createEle(newVnode)
+    } else if (oldCh) {
+      // 旧虚拟节点有子节点，新虚拟节点没有
+
+      //直接删除真实DOM里对应的子节点
+      api.removeChild(el)
+    }
+  }
+}
+</code></pre></div><p>其他几个点都很好理解，我们详细来讲一下<code>updateChildren</code></p> <h3 id="updatechildren方法"><a href="#updatechildren方法" class="header-anchor">#</a> updateChildren方法</h3> <p>这是<code>patchVnode</code>里最重要的一个方法，新旧虚拟节点的子节点对比，就是发生在<code>updateChildren方法</code>中，接下来就结合一些图来讲，让大家更好理解吧</p> <p>是怎么样一个对比方法呢？就是<code>首尾指针法</code>，新的子节点集合和旧的子节点集合，各有首尾两个指针，举个例子：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;ul&gt;
+    &lt;li&gt;a&lt;/li&gt;
+    &lt;li&gt;b&lt;/li&gt;
+    &lt;li&gt;c&lt;/li&gt;
+&lt;/ul&gt;
+
+修改数据后
+
+&lt;ul&gt;
+    &lt;li&gt;b&lt;/li&gt;
+    &lt;li&gt;c&lt;/li&gt;
+    &lt;li&gt;e&lt;/li&gt;
+    &lt;li&gt;a&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></div><p>那么新旧两个子节点集合以及其首尾指针为：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoia1qlNPJNT2M4J4HeHC2qXTMIkI4w0YcOxZy0oceX1Sw09dtPDrPdsw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>然后会进行互相进行比较，总共有五种比较情况：</p> <ul><li>1、<code>oldS 和 newS</code>使用<code>sameVnode方法</code>进行比较，<code>sameVnode(oldS, newS)</code></li> <li>2、<code>oldS 和 newE</code>使用<code>sameVnode方法</code>进行比较，<code>sameVnode(oldS, newE)</code></li> <li>3、<code>oldE 和 newS</code>使用<code>sameVnode方法</code>进行比较，<code>sameVnode(oldE, newS)</code></li> <li>4、<code>oldE 和 newE</code>使用<code>sameVnode方法</code>进行比较，<code>sameVnode(oldE, newE)</code></li> <li>5、如果以上逻辑都匹配不到，再把所有旧子节点的 <code>key</code> 做一个映射到旧节点下标的 <code>key -&gt; index</code> 表，然后用新 <code>vnode</code> 的 <code>key</code> 去找出在旧节点中可以复用的位置。</li></ul> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoRpXCauQHJf4N0icibGMZAHgZtsEZSxHeAsHjAR9TMwxFAFic7PLcA2OUg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>接下来就以上面代码为例，分析一下比较的过程</strong></p> <p>分析之前，请大家记住一点，最终的渲染结果都要以newVDOM为准，这也解释了为什么之后的节点移动需要移动到newVDOM所对应的位置</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <ul><li>第一步</li></ul> <div class="language- extra-class"><pre class="language-text"><code>oldS = a, oldE = c
+newS = b, newE = a
+</code></pre></div><p>比较结果：<code>oldS 和 newE</code> 相等，需要把<code>节点a</code>移动到<code>newE</code>所对应的位置，也就是末尾，同时<code>oldS++</code>，<code>newE--</code></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoNKRTCjnqN29GULBtbpFVXx3iaQNElckQy8rXlEAn39PWAX3ZwU67liaA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <ul><li>第二步</li></ul> <div class="language- extra-class"><pre class="language-text"><code>oldS = b, oldE = c
+newS = b, newE = e
+</code></pre></div><p>比较结果：<code>oldS 和 newS</code>相等，需要把<code>节点b</code>移动到<code>newS</code>所对应的位置，同时<code>oldS++</code>,<code>newS++</code></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoHtvtdezJNOVtaZrCgicHMTdurYlbrFBOWfRU7vwDxRt5Z1o6Mptehmg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <ul><li>第三步</li></ul> <div class="language- extra-class"><pre class="language-text"><code>oldS = c, oldE = c
+newS = c, newE = e
+</code></pre></div><p>比较结果：<code>oldS、oldE 和 newS</code>相等，需要把<code>节点c</code>移动到<code>newS</code>所对应的位置，同时<code>oldS++</code>,<code>oldE--</code>,<code>newS++</code></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoI3CSxNmvJm0kebWTN9SZMdwk0FgMncDxrFACBzrAreWLoqeFpuhkQA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <ul><li>第四步 <code>oldS &gt; oldE</code>，则<code>oldCh</code>先遍历完成了，而<code>newCh</code>还没遍历完，说明<code>newCh比oldCh多</code>，所以需要将多出来的节点，插入到真实DOM上对应的位置上</li></ul> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoxvY0CYibQkdfAPfFIicoIpKzib7DRGd2QW8alWR6IDdt4ic2FGic8ibxctbA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <ul><li>思考题 我在这里给大家留一个思考题哈。上面的例子是<code>newCh比oldCh多</code>，假如相反，是<code>oldCh比newCh多</code>的话，那就是<code>newCh</code>先走完循环，然后<code>oldCh</code>会有多出的节点，结果会在真实DOM里进行删除这些旧节点。大家可以自己思考一下，模拟一下这个过程，像我一样，画图模拟，才能巩固上面的知识。</li></ul> <p>附上<code>updateChildren</code>的核心原理代码</p> <div class="language- extra-class"><pre class="language-text"><code>function updateChildren(parentElm, oldCh, newCh) {
+  let oldStartIdx = 0, newStartIdx = 0
+  let oldEndIdx = oldCh.length - 1
+  let oldStartVnode = oldCh[0]
+  let oldEndVnode = oldCh[oldEndIdx]
+  let newEndIdx = newCh.length - 1
+  let newStartVnode = newCh[0]
+  let newEndVnode = newCh[newEndIdx]
+  let oldKeyToIdx
+  let idxInOld
+  let elmToMove
+  let before
+  while (oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) {
+    if (oldStartVnode == null) {
+      oldStartVnode = oldCh[++oldStartIdx]
+    } else if (oldEndVnode == null) {
+      oldEndVnode = oldCh[--oldEndIdx]
+    } else if (newStartVnode == null) {
+      newStartVnode = newCh[++newStartIdx]
+    } else if (newEndVnode == null) {
+      newEndVnode = newCh[--newEndIdx]
+    } else if (sameVnode(oldStartVnode, newStartVnode)) {
+      patchVnode(oldStartVnode, newStartVnode)
+      oldStartVnode = oldCh[++oldStartIdx]
+      newStartVnode = newCh[++newStartIdx]
+    } else if (sameVnode(oldEndVnode, newEndVnode)) {
+      patchVnode(oldEndVnode, newEndVnode)
+      oldEndVnode = oldCh[--oldEndIdx]
+      newEndVnode = newCh[--newEndIdx]
+    } else if (sameVnode(oldStartVnode, newEndVnode)) {
+      patchVnode(oldStartVnode, newEndVnode)
+      api.insertBefore(parentElm, oldStartVnode.el, api.nextSibling(oldEndVnode.el))
+      oldStartVnode = oldCh[++oldStartIdx]
+      newEndVnode = newCh[--newEndIdx]
+    } else if (sameVnode(oldEndVnode, newStartVnode)) {
+      patchVnode(oldEndVnode, newStartVnode)
+      api.insertBefore(parentElm, oldEndVnode.el, oldStartVnode.el)
+      oldEndVnode = oldCh[--oldEndIdx]
+      newStartVnode = newCh[++newStartIdx]
+    } else {
+      // 使用key时的比较
+      if (oldKeyToIdx === undefined) {
+        oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx) // 有key生成index表
+      }
+      idxInOld = oldKeyToIdx[newStartVnode.key]
+      if (!idxInOld) {
+        api.insertBefore(parentElm, createEle(newStartVnode).el, oldStartVnode.el)
+        newStartVnode = newCh[++newStartIdx]
+      }
+      else {
+        elmToMove = oldCh[idxInOld]
+        if (elmToMove.sel !== newStartVnode.sel) {
+          api.insertBefore(parentElm, createEle(newStartVnode).el, oldStartVnode.el)
+        } else {
+          patchVnode(elmToMove, newStartVnode)
+          oldCh[idxInOld] = null
+          api.insertBefore(parentElm, elmToMove.el, oldStartVnode.el)
+        }
+        newStartVnode = newCh[++newStartIdx]
+      }
+    }
+  }
+  if (oldStartIdx &gt; oldEndIdx) {
+    before = newCh[newEndIdx + 1] == null ? null : newCh[newEndIdx + 1].el
+    addVnodes(parentElm, before, newCh, newStartIdx, newEndIdx)
+  } else if (newStartIdx &gt; newEndIdx) {
+    removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx)
+  }
+}
+</code></pre></div><h2 id="用index做key"><a href="#用index做key" class="header-anchor">#</a> 用index做key</h2> <p>平常v-for循环渲染的时候，为什么不建议用index作为循环项的key呢？</p> <p>我们举个例子，左边是初始数据，然后我在数据前插入一个新数据，变成右边的列表</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;ul&gt;                      &lt;ul&gt;
+    &lt;li key=&quot;0&quot;&gt;a&lt;/li&gt;        &lt;li key=&quot;0&quot;&gt;林三心&lt;/li&gt;
+    &lt;li key=&quot;1&quot;&gt;b&lt;/li&gt;        &lt;li key=&quot;1&quot;&gt;a&lt;/li&gt;
+    &lt;li key=&quot;2&quot;&gt;c&lt;/li&gt;        &lt;li key=&quot;2&quot;&gt;b&lt;/li&gt;
+                              &lt;li key=&quot;3&quot;&gt;c&lt;/li&gt;
+&lt;/ul&gt;                     &lt;/ul&gt;
+</code></pre></div><p>按理说，最理想的结果是：只插入一个li标签新节点，其他都不动，确保操作DOM效率最高。但是我们这里用了index来当key的话，真的会实现我们的理想结果吗？废话不多说，实践一下：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;ul&gt;
+   &lt;li v-for=&quot;(item, index) in list&quot; :key=&quot;index&quot;&gt;{{ item.title }}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;button @click=&quot;add&quot;&gt;增加&lt;/button&gt;
+
+list: [
+        { title: &quot;a&quot;, id: &quot;100&quot; },
+        { title: &quot;b&quot;, id: &quot;101&quot; },
+        { title: &quot;c&quot;, id: &quot;102&quot; },
+      ]
+      
+add() {
+      this.list.unshift({ title: &quot;林三心&quot;, id: &quot;99&quot; });
+    }
+</code></pre></div><p>点击按钮我们可以看到，并不是我们预想的结果，而是所有li标签都更新了</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_gif/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqto9sx27EvoPibHicmhBdW0OvsZAmbxg8Uj4nSFmv01qhyIB3zr1xViay1YQ/640?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="图片"></p> <p>为什么会这样呢？还是通过图来解释</p> <p>按理说，<code>a，b，c</code>三个li标签都是复用之前的，因为他们三个根本没改变，改变的只是前面新增了一个<code>林三心</code></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoS5sM0dt8jyWbEbn8YfFebFQhJkDptY9WYIhP8ichibqvjP1EBkUg2k9A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>但是我们前面说了，在进行子节点的 <code>diff算法</code> 过程中，会进行 旧首节点和新首节点的<code>sameNode</code>对比，这一步命中了逻辑，因为现在<code>新旧两次首部节点</code> 的 <code>key</code> 都是 <code>0</code>了，同理，key为1和2的也是命中了逻辑，导致<code>相同key的节点</code>会去进行<code>patchVnode</code>更新文本，而原本就有的<code>c节点</code>，却因为之前没有key为4的节点，而被当做了新节点，所以很搞笑，使用index做key，最后新增的居然是本来就已有的c节点。所以前三个都进行<code>patchVnode</code>更新文本，最后一个进行了<code>新增</code>，那就解释了为什么所有li标签都更新了。</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/TZL4BdZpLdhLrBiatSxv9I8lK30ickrqtoiaFatJlztMacib49ae341ZEMmbECmncPMwmw9oXPXXictE0Rlh7mt5s7Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p>那我们可以怎么解决呢？其实我们只要使用一个独一无二的值来当做key就行了</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;ul&gt;
+   &lt;li v-for=&quot;item in list&quot; :key=&quot;item.id&quot;&gt;{{ item.title }}&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></div><p>现在再来看看效果</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p> <p>为什么用了id来当做key就实现了我们的理想效果呢，因为这么做的话，<code>a，b，c节点</code>的<code>key</code>就会是永远不变的，更新前后key都是一样的，并且又由于<code>a，b，c节点</code>的内容本来就没变，所以就算是进行了<code>patchVnode</code>，也不会执行里面复杂的更新操作，节省了性能，而林三心节点，由于更新前没有他的key所对应的节点，所以他被当做新的节点，增加到真实DOM上去了。</p> <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="图片"></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:36:39 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/algorithm/算法进阶/DIff算法看不懂就一起来锤我.html" class="prev">
+        DIff算法看不懂就一起来锤我
+      </a></span> <span class="next"><a href="/algorithm/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/" class="router-link-active">
+        算法进阶
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.a1270bfd.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/16.76fbd414.js" defer></script>
+  </body>
+</html>

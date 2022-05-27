@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端进阶算法4：链表原来如此简单(+leetcode刷题） | duangdong的algorithm</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0088ce24040b03f2947322ab31d23414";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+    <script>
+  var _hmt = _hmt || [];
+  _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
+    shouldTrackUrlChange: function (newPath, oldPath) {
+      newPath = newPath.split('#')[0];
+      oldPath = oldPath.split('#')[0];
+      return newPath != oldPath;
+    }}
+  ]);
+  </script>
+    <meta name="description" content="前端相关知识归纳总结">
+    <meta name="keywords" content="qd-blog,node,vuepress,leetcode,algorithm">
+    
+    <link rel="preload" href="/assets/css/0.styles.a427ee9b.css" as="style"><link rel="preload" href="/assets/js/app.a1270bfd.js" as="script"><link rel="preload" href="/assets/js/2.e21ead49.js" as="script"><link rel="preload" href="/assets/js/29.d42a44bf.js" as="script"><link rel="prefetch" href="/assets/js/10.e202a706.js"><link rel="prefetch" href="/assets/js/11.ecb9c7a6.js"><link rel="prefetch" href="/assets/js/12.266a3d3f.js"><link rel="prefetch" href="/assets/js/13.0c793450.js"><link rel="prefetch" href="/assets/js/14.988999f7.js"><link rel="prefetch" href="/assets/js/15.a499e395.js"><link rel="prefetch" href="/assets/js/16.76fbd414.js"><link rel="prefetch" href="/assets/js/17.c4144f70.js"><link rel="prefetch" href="/assets/js/18.3eb6638a.js"><link rel="prefetch" href="/assets/js/19.a77cf33a.js"><link rel="prefetch" href="/assets/js/20.ce0df852.js"><link rel="prefetch" href="/assets/js/21.ede5df4c.js"><link rel="prefetch" href="/assets/js/22.9d15467b.js"><link rel="prefetch" href="/assets/js/23.8dfd5cc9.js"><link rel="prefetch" href="/assets/js/24.318a6667.js"><link rel="prefetch" href="/assets/js/25.21d4e02e.js"><link rel="prefetch" href="/assets/js/26.56d7af6b.js"><link rel="prefetch" href="/assets/js/27.706c20ac.js"><link rel="prefetch" href="/assets/js/28.78138cb9.js"><link rel="prefetch" href="/assets/js/3.0f21e356.js"><link rel="prefetch" href="/assets/js/30.16e46063.js"><link rel="prefetch" href="/assets/js/31.f83796d7.js"><link rel="prefetch" href="/assets/js/32.0ab71512.js"><link rel="prefetch" href="/assets/js/33.15f6178f.js"><link rel="prefetch" href="/assets/js/34.76fa72d8.js"><link rel="prefetch" href="/assets/js/35.2d0e715d.js"><link rel="prefetch" href="/assets/js/36.9fea7079.js"><link rel="prefetch" href="/assets/js/37.40c3a072.js"><link rel="prefetch" href="/assets/js/38.75ccc694.js"><link rel="prefetch" href="/assets/js/39.7237e7eb.js"><link rel="prefetch" href="/assets/js/4.8f6f0475.js"><link rel="prefetch" href="/assets/js/40.af50e053.js"><link rel="prefetch" href="/assets/js/41.542ba3df.js"><link rel="prefetch" href="/assets/js/42.dc0826e3.js"><link rel="prefetch" href="/assets/js/43.5a75223c.js"><link rel="prefetch" href="/assets/js/44.ece2f88a.js"><link rel="prefetch" href="/assets/js/5.8b87f02a.js"><link rel="prefetch" href="/assets/js/6.2f86309f.js"><link rel="prefetch" href="/assets/js/7.f1cc41de.js"><link rel="prefetch" href="/assets/js/8.2255b937.js"><link rel="prefetch" href="/assets/js/9.98c97d09.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a427ee9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">duangdong的algorithm</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/algorithm/" class="nav-link router-link-active">
+  数据结构
+</a></div><div class="nav-item"><a href="/leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/leetcode-summary/" class="nav-link">
+  算法题
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/algorithm/" class="nav-link router-link-active">
+  数据结构
+</a></div><div class="nav-item"><a href="/leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/leetcode-summary/" class="nav-link">
+  算法题
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/algorithm/" aria-current="page" class="sidebar-link">算法相关</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>前端实际项目使用</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/algorithm/动态规划.html" class="sidebar-link">前端也能学算法：由浅入深讲解动态规划</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>排序</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/algorithm/由浅入深讲解贪心算法.html" class="sidebar-link">前端也能学算法：由浅入深讲解贪心算法</a></li><li><a href="/algorithm/简单复习下前端算法复杂度相关的知识.html" class="sidebar-link">简单复习下前端算法复杂度相关的知识</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>算法进阶</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/algorithm/算法进阶/ChromeV8源码看JavaScript数组.html" class="sidebar-link">前端进阶算法2：从Chrome V8源码看JavaScript数组(附赠腾讯面试题)</a></li><li><a href="/algorithm/算法进阶/DIff算法看不懂就一起来锤我.html" class="sidebar-link">DIff算法看不懂就一起来锤我</a></li><li><a href="/algorithm/算法进阶/Diff算法核心原理.html" class="sidebar-link">15张图，20分钟吃透Diff算法核心原理</a></li><li><a href="/algorithm/%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6/" aria-current="page" class="sidebar-link">算法进阶</a></li><li><a href="/algorithm/算法进阶/一看就懂的队列及配套算法题.html" class="sidebar-link">前端进阶算法6：一看就懂的队列及配套算法题</a></li><li><a href="/algorithm/算法进阶/从浏览器缓存淘汰策略和Vue的keep-alive学习LRU算法.html" class="sidebar-link">前端进阶算法3：从浏览器缓存淘汰策略和Vue的keep-alive学习LRU算法</a></li><li><a href="/algorithm/算法进阶/别再说你不懂Top-K问题了.html" class="sidebar-link">别再说你不懂Top K问题了</a></li><li><a href="/algorithm/算法进阶/去大厂面试问我算法.html" class="sidebar-link">去大厂面试问我算法，我该怎么办？</a></li><li><a href="/algorithm/算法进阶/吊打面试官之数据结构栈.html" class="sidebar-link">前端进阶算法5：吊打面试官之数据结构栈（+leetcode刷题）</a></li><li><a href="/algorithm/算法进阶/堆排序.html" class="sidebar-link">前端进阶算法：看完这篇，再也不怕堆排序、Top K、中位数问题面试了</a></li><li><a href="/algorithm/算法进阶/头条正在面的哈希表问题.html" class="sidebar-link">前端进阶算法：头条正在面的哈希表问题</a></li><li><a href="/algorithm/算法进阶/如何分析-统计算法的执行效率和资源消耗.html" class="sidebar-link">前端进阶算法1：如何分析、统计算法的执行效率和资源消耗？</a></li><li><a href="/algorithm/算法进阶/小白都可以看懂的树与二叉树.html" class="sidebar-link">前端进阶算法7：小白都可以看懂的树与二叉树</a></li><li><a href="/algorithm/算法进阶/带你快速入门前端算法.html" class="sidebar-link">10 问 10 答，带你快速入门前端算法</a></li><li><a href="/algorithm/算法进阶/常见算法题及完美题解.html" class="sidebar-link">前端进阶算法：常见算法题及完美题解</a></li><li><a href="/algorithm/算法进阶/链表原来如此简单.html" class="active sidebar-link">前端进阶算法4：链表原来如此简单(+leetcode刷题）</a></li></ul></section></li><li><a href="/algorithm/贪心.html" class="sidebar-link">前端也能学算法：由浅入深讲解贪心算法</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="前端进阶算法4-链表原来如此简单-leetcode刷题"><a href="#前端进阶算法4-链表原来如此简单-leetcode刷题" class="header-anchor">#</a> 前端进阶算法4：链表原来如此简单(+leetcode刷题）</h1> <p>原创 前端瓶子君 前端瓶子君 <em>2020-04-09</em></p> <h3 id="引言"><a href="#引言" class="header-anchor">#</a> 引言</h3> <p>链表相对于数组来说，要复杂的多，首先，链表不需要连续的内存空间，它是由一组零散的内存块透过指针连接而成，所以，每一个块中必须包含当前节点内容以及后继指针。最常见的链表类型有单链表、双链表以及循环链表。</p> <p>学习链表最重要的是 <strong>多画图多练习</strong> ，没有捷径可循，在遇到链表问题时，瓶子君总结了一下，可以按照以下五步骤：</p> <ul><li>确定解题的数据结构：单链表、双链表或循环链表等</li> <li>确定解题思路：如何解决问题</li> <li>画图实现：画图可以帮助我们发现思维中的漏洞（一些思路不周的情况）</li> <li>确定边界条件：思考解题中是否有边界问题以及如何解决</li> <li>代码实现：解题完成✅</li></ul> <p>本文会给常用链表（单链表、双链表以及循环链表）的基本操作已经代码实现，并给出实现思路，这些都是链表解题的基石，请务必掌握！⛽️⛽️⛽️</p> <p>最后附赠一道 leetcode 题目！</p> <p>下面开始本节的学习吧！！！👇👇👇</p> <h3 id="一、单链表"><a href="#一、单链表" class="header-anchor">#</a> 一、单链表</h3> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQRa6vhSIWibAzJqBB3BlrOHzj7y5RKe381ibcdPyHhx8FFTNibCnMqdBEhGialmGnyHzTsnMJq4XibkuaQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p> <p>单链表结构：</p> <div class="language- extra-class"><pre class="language-text"><code>function List () {
+  // 节点
+  let Node = function (element) {
+    this.element = element
+    this.next = null
+  }
+  // 初始头节点为 null
+  let head = null
+  
+  // 链表长度
+  let length = 0
+  // 操作
+  this.getList = function() {return head}
+  this.search = function(list, element) {}
+  this.append = function(element) {}
+  this.insert = function(position, element) {}
+  this.remove = function(element){}
+  this.isEmpty = function(){}
+  this.size = function(){}
+}
+</code></pre></div><h4 id="_1-追加节点"><a href="#_1-追加节点" class="header-anchor">#</a> 1. 追加节点：</h4> <p>**确定解题的数据结构：**单链表</p> <p><strong>确定解题思路：</strong> 初始化一个节点（待追加节点），遍历到链尾，在尾节点后插入该节点</p> <p><strong>画图实现：</strong></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQRa6vhSIWibAzJqBB3BlrOHz97TLJP0ymy9X4o55WdRTCRkNuLG6u2Hqv2IwWgZ6x5VBcxG57MPRsQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>确定边界条件：</strong> 当链表为 <code>null</code> ，直接将 <code>head</code> 指向待插入节点，不需要遍历</p> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>function append (element) {
+  let node = new Node(element),
+      p = head
+  if (!head){
+    head = node
+  } else {
+    while (p.next) {
+      p = p.next
+    }
+    p.next = node
+  }
+  length += 1
+}
+
+// 测试
+let list = new List()
+for(let i = 0; i &lt; 5; i+=1) {
+  list.append(i)
+}
+</code></pre></div><p>解题完成✅</p> <h4 id="_2-查找"><a href="#_2-查找" class="header-anchor">#</a> 2. 查找：</h4> <p>**确定解题的数据结构：**单链表</p> <p><strong>确定解题思路：</strong> 遍历单链表，判断节点值是否等于待查找值，相等则返回 <code>true</code> ，否则继续遍历下一个节点，直到遍历完整个链表还未找到，则返回 <code>false</code></p> <p><strong>画图实现：</strong> 很简单，读者可以尝试画一下</p> <p><strong>确定边界条件：</strong> 当链表为 <code>null</code> ，可直接返回 <code>false</code></p> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 判断链表中是否存在某节点
+function search(element) {
+  let p = head
+  if (!p) return false
+  while(p) {
+    if (p.element === element) return true
+    p = p.next
+  }
+  return false
+}
+
+// 测试
+list.search(4) // true
+list.search(11) // false
+</code></pre></div><p>解题完成✅</p> <h4 id="_3-在-position-位置插入"><a href="#_3-在-position-位置插入" class="header-anchor">#</a> 3. 在 position 位置插入：</h4> <p>**确定解题的数据结构：**单链表</p> <p><strong>确定解题思路：</strong> 初始化一个节点（待插入节点 <code>node</code> ），遍历到 <code>position</code> 前一个位置节点，在该节点后插入 <code>node</code></p> <p><strong>画图实现：</strong></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQRa6vhSIWibAzJqBB3BlrOHzibASTXBAck7drvRaNqH32ZcKpYSjOSH78RkZ5KJ0YLJNfBaNeM3TW3g/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p> <p><strong>确定边界条件：</strong></p> <ul><li>当 <code>position</code> 为 <code>0</code> 时，直接将插入节点 <code>node.next</code> 指向 <code>head</code> ， <code>head</code> 指向 <code>node</code> 即可，不需要遍历</li> <li>当待插入位置 <code>position &lt; 0</code> 或超出链表长度 <code>position &gt; length</code> ，都是有问题的，不可插入，此时直接返回 <code>null</code> ，插入失败</li></ul> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 插入 position 的后继节点
+function insert (position, element) {
+  // 创建插入节点
+  let node = new createNode(element)
+  if (position &gt;= 0 &amp;&amp; position &lt;= length) {
+    let prev = head,
+        curr = head,
+        index = 0
+    if(position === 0) {
+      node.next = head
+      head = node
+    } else {
+      while(index &lt; position) {
+        prev = curr
+        curr = curr.next
+        index ++
+      }
+      prev.next = node
+      node.next = curr
+    }
+    length += 1
+  } else {
+    return null
+  }
+}
+
+// 测试
+list.insert(10)
+</code></pre></div><p>解题完成✅</p> <h4 id="_4-删除"><a href="#_4-删除" class="header-anchor">#</a> 4. 删除：</h4> <p>**确定解题的数据结构：**单链表</p> <p><strong>确定解题思路：</strong> 遍历单链表，找到待删除节点，删除</p> <p><strong>画图实现：</strong></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQRa6vhSIWibAzJqBB3BlrOHzj3AWwPVUHJYyMPLjibXtBscI8VcnfIOcNOqrIjP5FR9cBia17M0x8cdA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p> <p><strong>确定边界条件：</strong> 当链表为 <code>null</code> ，直接返回</p> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 删除值为 element 节点
+function remove (element) {
+  let p = head, prev = head
+  if(!head) return
+  while(p) {
+    if(p.element === element) {
+      p = p.next
+      prev.next = p
+    } else {
+        prev = p
+        p = p.next
+    }
+  }
+}
+</code></pre></div><p>解题完成✅</p> <h4 id="_5-复杂度分析"><a href="#_5-复杂度分析" class="header-anchor">#</a> 5. 复杂度分析：</h4> <p><strong>查找：从头节点开始查找，时间复杂度为 O(n)</strong></p> <p><strong>插入或删除：在某一节点后插入或删除一个节点（后继节点）的时间复杂度为 O(1)</strong></p> <p>链表五步骤是不是很好用😊，下面看一下双链表👇</p> <h3 id="二、双链表"><a href="#二、双链表" class="header-anchor">#</a> 二、双链表</h3> <p>顾名思义，单链表只有一个方向，从头节点到尾节点，那么双链表就有两个方向，从尾节点到头节点：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQRa6vhSIWibAzJqBB3BlrOHzuIwNR6y6ZMJTHRAo0O9AeGaicUJg1mnAiamaf9jCYexJR7KbiarWpiaZwA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <div class="language- extra-class"><pre class="language-text"><code>function DoublyLinkedList() {
+    let Node = function(element) {
+        this.element = element
+        // 前驱指针
+        this.prev = null
+        // 后继指针
+        this.next = null
+    }
+    // 初始头节点为 null
+  	let head = null
+    // 新增尾节点
+    let tail = null
+  
+  	// 链表长度
+  	let length = 0
+    // 操作
+    this.search = function(element) {}
+    this.insert = function(position, element) {}
+    this.removeAt = function(position){}
+    this.isEmpty = function(){ return length === 0 }
+    this.size = function(){ return length }
+}
+</code></pre></div><h4 id="_1-在-position-位置插入节点"><a href="#_1-在-position-位置插入节点" class="header-anchor">#</a> 1. 在 position 位置插入节点：</h4> <p><strong>确定解题的数据结构：</strong> 双链表</p> <p><strong>确定解题思路：</strong> 初始化一个节点（待插入节点 <code>node</code> ），遍历链表到 <code>position</code> 前一个位置节点，在该节点位置后插入 <code>node</code></p> <p><strong>画图实现：</strong></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQRa6vhSIWibAzJqBB3BlrOHzZeNkXPawiclyEwK9xAbERmfNdjhnPicO9nsU0xwHBz59nUflaicj5JLibQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>确定边界条件：</strong></p> <p>当待插入位置 <code>position &lt; 0</code> 或超出链表长度 <code>position &gt; length</code> ，都是有问题的，不可插入，此时直接返回 <code>null</code> ，插入失败</p> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 插入 position 的后继节点
+function insert (position, element) {
+  // 创建插入节点
+  let node = new Node(element)
+  if (position &gt;= 0 &amp;&amp; position &lt; length) {
+    let prev = head,
+        curr = head,
+        index = 0
+    if(position === 0) {
+      // 在第一个位置添加
+        if(!head) { // 注意这里与单链表不同
+          head = node
+          tail = node
+        } else {
+          // 双向
+          node.next = head
+          head.prev = node
+          // head 指向新的头节点
+          head = node
+        }
+    } else if(position === length) {
+      // 插入到尾节点
+      curr = tial
+      curr.next = node
+      node.prev = curr
+      // tail 指向新的尾节点
+      tail = node
+    } else {
+      while(index &lt; position) {
+        prev = curr
+        curr = curr.next
+        index ++
+      }
+      // 插入到 prev 后，curr 前
+      prev.next = node
+      node.next = curr
+      curr.prev = node
+      node.prev = prev
+    }
+    length += 1
+    return true
+  } else {
+    return false
+  }
+}
+
+// 测试
+list.insert(10)
+</code></pre></div><p>解题完成✅</p> <h4 id="_2-删除"><a href="#_2-删除" class="header-anchor">#</a> 2. 删除：</h4> <p><strong>确定解题的数据结构：</strong> 双链表</p> <p><strong>确定解题思路：</strong> 遍历双链表，找到待删除节点，删除</p> <p><strong>画图实现：</strong></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQRa6vhSIWibAzJqBB3BlrOHz6yiaU6wiaRPdfZQql5daFibMn00Icld6egUHswVToWYm1LlV3PoNTTecQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>确定边界条件：</strong> 当链表为 <code>null</code> ，直接返回</p> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 删除 position 位置的节点
+function removeAt (position) {
+  if (position &gt;= 0 &amp;&amp; position &lt; length &amp;&amp; length &gt; 0) {
+    let prev = head,
+        curr = head,
+        index = 0
+    if(position === 0) {
+      // 移除头节点
+        if(length === 1) { // 仅有一个节点
+          head = null
+          tail = null
+        } else {
+          head = head.next
+          head.prev = null
+        }
+    } else if(position === length-1) {
+      // 移除尾节点
+      curr = tial
+      tail = curr.prev
+      tail.next = null
+    } else {
+      while(index &lt; position) {
+        prev = curr
+        curr = curr.next
+        index ++
+      }
+      // 移除curr
+      prev.next = curr.next
+      curr.next.prev = prev
+    }
+    length -= 1
+    return curr.element
+  } else {
+    return null
+  }
+}
+</code></pre></div><p>解题完成✅</p> <h4 id="_3-查找"><a href="#_3-查找" class="header-anchor">#</a> 3. 查找：</h4> <p>双链表的查找和单链表类似，都是遍历链表，找到返回 <code>true</code>，找不到返回 <code>false</code> 。</p> <h4 id="_4-复杂度分析"><a href="#_4-复杂度分析" class="header-anchor">#</a> 4. 复杂度分析：</h4> <p><strong>查找：查找前驱节点或后继节点时间复杂度为 O(1)，其它节点仍为 O(n)</strong></p> <p><strong>插入或删除：插入或删除前驱节点或后继节点的时间复杂度都为 O(1)</strong></p> <h3 id="三、循环单链表"><a href="#三、循环单链表" class="header-anchor">#</a> 三、循环单链表</h3> <p>循环单链表是一种特殊的单链表，它和单链表的唯一区别是：单链表的尾节点指向的是 NULL，而循环单链表的尾节点指向的是头节点，这就形成了一个首尾相连的环：</p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQRa6vhSIWibAzJqBB3BlrOHz8ngPXt8448KcnWvPNhIpLe3weDSOwTicJDCib7GVWsybPzSRvgm4QEiaA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">img</p> <p>既然有循环单链表，当然也有循环双链表，循环双链表和双链表不同的是：</p> <ul><li>循环双链表的 <code>tail.next</code>（ <code>tail</code> 的后继指针） 为 <code>null</code> ，循环双链表的 <code>tail.next</code>为 <code>head</code></li> <li>循环双链表的 <code>head.prev</code>（ <code>head</code> 的前驱指针） 为 <code>null</code> ，循环双链表的 <code>head.prev</code>为 <code>tail</code></li></ul> <p>这里以循环单列表为例</p> <div class="language- extra-class"><pre class="language-text"><code>function CircularLinkedList() {
+    let Node = function(element) {
+        this.element = element
+        // 后继指针
+        this.next = null
+    }
+    // 初始头节点为 null
+  	let head = null
+  
+  	// 链表长度
+  	let length = 0
+    // 操作
+    this.search = function(element) {}
+    this.insert = function(positon, element) {}
+    this.removeAt = function(position){}
+    this.isEmpty = function(){ return length === 0 }
+    this.size = function(){ return length }
+}
+</code></pre></div><h4 id="_1-在-positon-后插入"><a href="#_1-在-positon-后插入" class="header-anchor">#</a> 1. 在 positon 后插入：</h4> <p><strong>确定解题的数据结构：</strong> 循环单链表</p> <p><strong>确定解题思路：</strong> 初始化一个节点（待插入节点 <code>node</code> ），遍历到 <code>position</code> 前一个位置节点，在该节点后插入 <code>node</code></p> <p><strong>画图实现：</strong></p> <p><img src="https://mmbiz.qpic.cn/mmbiz_png/pfCCZhlbMQRa6vhSIWibAzJqBB3BlrOHzibEav8seYAtRXdT3XXZymvCg1DdPTYdwibLX8pPf7x3kgDOBHNHxgypg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p> <p><strong>确定边界条件：</strong></p> <ul><li>当 <code>position</code> 为 <code>0</code> 时，需要遍历到尾节点，然后在尾节点后插入节点 ， 并将 <code>head</code> 指向</li> <li>当待插入位置 <code>position &lt; 0</code> 或超出链表长度 <code>position &gt; length</code> ，都是有问题的，不可插入，此时直接返回 <code>null</code> ，插入失败</li></ul> <p><strong>代码实现：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>// 插入 position 的后继节点
+function insert (position, element) {
+  // 创建插入节点
+  let node = new createNode(element)
+  if (position &gt;= 0 &amp;&amp; position &lt;= length) {
+    let prev = head,
+        curr = head,
+        index = 0
+    if(position === 0) {
+      // 与单链表插入不同的
+      while(index &lt; length) {
+        prev = curr
+        curr = curr.next
+        index ++
+      }
+      prev.next = node
+      node.next = curr
+      head = node
+    } else {
+      while(index &lt; position) {
+        prev = curr
+        curr = curr.next
+        index ++
+      }
+      prev.next = node
+      node.next = curr
+    }
+    length += 1
+  } else {
+    return null
+  }
+}
+
+// 测试
+list.insert(10)
+</code></pre></div><p>解题完成✅</p> <h4 id="_2-查找-2"><a href="#_2-查找-2" class="header-anchor">#</a> 2. 查找：</h4> <p>和单链表类似，唯一不同的是：循环单链表的循环结束条件为 <code>p !== head</code></p> <div class="language- extra-class"><pre class="language-text"><code>// 判断链表中是否存在某节点
+function search(element) {
+  let p = head
+  if (!p) return false
+  // 和单链表的不同所在
+  while(p !== head) {
+    if (p.element === element) return true
+    p = p.next
+  }
+  return false
+}
+
+// 测试
+list.search(4) // true
+list.search(11) // false
+</code></pre></div><p>解题完成✅</p> <h4 id="_3-删除"><a href="#_3-删除" class="header-anchor">#</a> 3. 删除：</h4> <p>和单链表类似，唯一不同的是：循环单链表的循环结束条件为 <code>p !== head</code></p> <div class="language- extra-class"><pre class="language-text"><code>// 删除值为 element 节点
+function remove (element) {
+  let p = head, prev = head
+  if(!head) return
+  while(p !== head) {
+    if(p.element === element) {
+      p = p.next
+      prev.next = p
+    } else {
+        prev = p
+        p = p.next
+    }
+  }
+}
+</code></pre></div><p>解题完成✅</p> <h4 id="_4-复杂度分析-2"><a href="#_4-复杂度分析-2" class="header-anchor">#</a> 4. 复杂度分析</h4> <p><strong>查找：循环链表从任一节点开始查找目标节点，时间复杂度为 O(n)</strong></p> <p><strong>插入或删除：它和单链表一样，后继节点插入及删除的时间复杂度为 O(1)</strong></p> <h3 id="四、leetcode21-合并两个有序链表"><a href="#四、leetcode21-合并两个有序链表" class="header-anchor">#</a> 四、leetcode21：合并两个有序链表</h3> <p>将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p> <p><strong>示例：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4
+输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4
+</code></pre></div><p>欢迎将答案提交到 https://github.com/sisterAn/JavaScript-Algorithms/issues/11，让更多人看到，瓶子君也会在明日放上自己的解答。</p> <h3 id="五、认识更多的前端道友-一起进阶前端开发"><a href="#五、认识更多的前端道友-一起进阶前端开发" class="header-anchor">#</a> 五、认识更多的前端道友，一起进阶前端开发</h3> <p>前端算法集训营第一期免费开营啦🎉🎉🎉，免费哟！</p> <p>在这里，你可以和志同道合的前端朋友们（200+）一起进阶前端算法，从0到1构建完整的数据结构与算法体系。</p> <p>在这里，瓶子君不仅介绍算法，还将算法与前端各个领域进行结合，包括浏览器、HTTP、V8、React、Vue源码等。</p> <p>在这里，你可以每天学习一道大厂算法题（阿里、腾讯、百度、字节等等）或 leetcode，瓶子君都会在第二天解答哟！</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/27/2022, 9:36:39 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/algorithm/算法进阶/常见算法题及完美题解.html" class="prev">
+        前端进阶算法：常见算法题及完美题解
+      </a></span> <span class="next"><a href="/algorithm/贪心.html">
+        前端也能学算法：由浅入深讲解贪心算法
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.a1270bfd.js" defer></script><script src="/assets/js/2.e21ead49.js" defer></script><script src="/assets/js/29.d42a44bf.js" defer></script>
+  </body>
+</html>
